@@ -10,6 +10,12 @@ node* create_node(int data) {
 
 // fonction pour créer un nouvel arc
 arc* create_arc(node* destination, int data) {
+    arc* new_arc = (arc*)malloc(sizeof(arc));
+    if (new_arc != NULL){
+        new_arc->data=date;
+        new_arc->next=NULL;
+        new_arc->dest=destination;
+    }
 }
 
 // fonction pour ajouter un arc à un noeud
