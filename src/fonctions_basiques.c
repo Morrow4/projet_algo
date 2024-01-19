@@ -25,6 +25,7 @@ void add_arc(node* source, node* destination, int data) {
 
 // fonction pour créer un nouveau graphe
 graph* create_graph(int nb_nodes) {
+    graph* new_graph = (graph*)malloc(sizeof(graph))
 }
 
 // fonction pour supprimmer la structure de graphe
