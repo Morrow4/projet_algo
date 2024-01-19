@@ -9,7 +9,7 @@
 // Structure de graphe
 typedef struct graphe {
     int nb_nodes; // nombre total  de noeuds
-    node *nodes
+    node *nodes // liste qui pointe vers les noeuds du graphe
 } graphe;
 
 // Structure d'arrête de graphe
