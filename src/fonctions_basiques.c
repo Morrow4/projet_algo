@@ -6,6 +6,9 @@
 
 // fonction pour créer un nouveau noeud
 node* create_node(int data) {
+    node* new_node = (node*)malloc(sizeof(node));
+    new_node - data = data;
+    new_node arcs
 }
 
 // fonction pour créer un nouvel arc
