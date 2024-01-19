@@ -7,10 +7,10 @@
 #include <stdlib.h>
 
 // Structure de graphe
-typedef struct graphe {
+typedef struct graph {
     int nb_nodes; // nombre total de noeuds
     node *nodes; // liste qui pointe vers les noeuds du graphe
-} graphe;
+} graph;
 
 // Structure d'arrête de graphe
 typedef struct arc {

@@ -4,10 +4,21 @@
 
 /* Fonctions basiques pour la structure de graphe */
 
-// fonction de création de graphes
+// fonction pour créer un nouveau noeud
+node* create_node(int data) {
+}
 
+// fonction pour créer un nouvel arc
+arc* create_arc(node* destination, int data) {
+}
 
-// fonction d'ajout des sommets
-// fonction d'ajout des arcs
+// fonction pour ajouter un arc à un noeud
+void add_arc(node* source, node* destination, int data) {
+}
+
+// fonction pour créer un nouveau graphe
+graphe* create_graph(int nb_nodes) {
+}
+
 // fonction pour supprimmer la structure de graphe
-// fonction pour supprimmer les noeuds et arrêtes
+// fonction pour supprimmer les noeuds et arcs
