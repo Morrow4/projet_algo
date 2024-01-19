@@ -25,6 +25,4 @@ typedef struct node {
     struct arcs *arc; // liste des arêtes connectés à ce noeud
 } node;
 
-//Structure BFS
-void bfs(graph* g, int start_node_index);
 #ENDIF STRUCT_H
