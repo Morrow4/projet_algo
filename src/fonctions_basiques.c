@@ -49,9 +49,19 @@ graph* create_graph(int nb_nodes) {
 
 }
 
-// fonction pour afficher un graphe
+// fonction pour afficher un graphe 
 void print_graph(graph* graph) {
+    printf("Graph with %d nodes:\n", graph->nb_nodes);
+    for (int i = 0; i < graph->nb_nodes; i++) {
+        printf("Node %d [data: %d] -> ", i, graph->nodes[i].data);
+        arc* currentArc = graph->nodes[i].arcs;
+        while (currentArc != NULL) {
+            printf("[Arc: Node %d | data=%d] ", currentArc->dest->data, currentArc->data);
+            currentArc = currentArc->next;
+        }
 
+        printf("\n");
+    }
 }
 
 // fonction pour supprimmer le graphe
