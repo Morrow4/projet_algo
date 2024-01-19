@@ -9,19 +9,19 @@
 // Structure de graphe
 typedef struct graphe {
     int nb_nodes; // nombre total de noeuds
-    node *nodes // liste qui pointe vers les noeuds du graphe
+    node *nodes; // liste qui pointe vers les noeuds du graphe
 } graphe;
 
 // Structure d'arrête de graphe
-typedef struct edge {
+typedef struct arc {
     int data; // valeur de l'arrête
-    struct edge *next // pointeur vers la prochaine arête dans la liste
-} edge;
+    struct arc *next; // pointeur vers la prochaine arête dans la liste
+} arc;
 
 // Structure de noeud de graphe
 typedef struct node {
     int data; // valeur du noeud
-    struct edge *edges; // liste des arêtes connectés à ce noeud
+    struct arc *arc; // liste des arêtes connectés à ce noeud
 } node;
 
 #ENDIF STRUCT_H
