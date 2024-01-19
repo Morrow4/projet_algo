@@ -22,12 +22,13 @@ arc* create_arc(node* destination, int data) {
         new_arc -> data = data;
         new_arc -> next = NULL; // initialise le pointeur vers le prochaine arc à NULL
         new_arc -> destination = destination;
+        return new_arc;
     }
     return NULL;
 }
 
 // fonction pour ajouter un arc à un noeud
-void add_arc(node* source, node* destination, int data) {
+arc* add_arc(node* source, node* destination, int data) {
     arc* new_arc = create_arc(destination, data);
     new_arc -> next = source -> arcs; // ajoute l'arc au début de la liste
     source -> arcs = new_arc;
