@@ -1,7 +1,7 @@
-/*Déclarations des structures*/
+/* Déclarations des structures */
 
-#IFNDEF TRI_H
-#DEFINE TRI_H
+#IFNDEF STRUCT_H
+#DEFINE STRUCT_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,3 +23,5 @@ typedef struct node {
     int data; // valeur du noeud
     struct edge *edges; // liste des arêtes connectés à ce noeud
 } node;
+
+#ENDIF STRUCT_H
