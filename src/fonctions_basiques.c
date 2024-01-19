@@ -17,7 +17,7 @@ void add_arc(node* source, node* destination, int data) {
 }
 
 // fonction pour créer un nouveau graphe
-graphe* create_graph(int nb_nodes) {
+graph* create_graph(int nb_nodes) {
 }
 
 // fonction pour supprimmer la structure de graphe
