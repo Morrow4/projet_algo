@@ -31,6 +31,7 @@ void add_arc(node* source, node* destination, int data) {
     arc* new_arc = create_arc(destination, data);
     new_arc -> next = source -> arcs; // ajoute l'arc au début de la liste
     source -> arcs = new_arc;
+    return new_arc;
 }
 
 // fonction pour créer un nouveau graphe
@@ -46,7 +47,6 @@ graph* create_graph(int nb_nodes) {
         return new_graph;
     }
     return NULL;
-
 }
 
 // fonction pour afficher un graphe 
@@ -59,7 +59,6 @@ void print_graph(graph* graph) {
             printf("[Arc: Node %d | data=%d] ", currentArc->dest->data, currentArc->data);
             currentArc = currentArc->next;
         }
-
         printf("\n");
     }
 }
