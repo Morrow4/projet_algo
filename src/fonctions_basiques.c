@@ -16,9 +16,9 @@ node* create_node(int data) {
 arc* create_arc(node* destination, int data) {
     arc* new_arc = (arc*)malloc(sizeof(arc));
     if (new_arc != NULL){
-        new_arc->data=date;
-        new_arc->next=NULL;
-        new_arc->dest=destination;
+        new_arc -> data = data;
+        new_arc -> next = NULL; // initialise le pointeur vers le prochaine arc à NULL
+        new_arc -> destination = destination;
     }
 }
 
