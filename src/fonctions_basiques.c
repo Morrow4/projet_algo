@@ -51,13 +51,13 @@ graph* create_graph(int nb_nodes) {
 
 // fonction pour afficher un graphe 
 void print_graph(graph* graph) {
-    printf("Graph with %d nodes:\n", graph->nb_nodes);
-    for (int i = 0; i < graph->nb_nodes; i++) {
-        printf("Node %d [data: %d] -> ", i, graph->nodes[i].data);
-        arc* currentArc = graph->nodes[i].arcs;
-        while (currentArc != NULL) {
-            printf("[Arc: Node %d | data=%d] ", currentArc->dest->data, currentArc->data);
-            currentArc = currentArc->next;
+    printf("Graph with %d nodes:\n", graph -> nb_nodes);
+    for (int i = 0; i < graph -> nb_nodes; i++) {
+        printf("Node %d [data: %d] -> ", i, graph -> nodes[i].data);
+        arc* current_arc = graph -> nodes[i].arcs;
+        while (current_arc != NULL) {
+            printf("[Arc: Node %d | data=%d] ", current_arc -> destination -> data, current_arc -> data);
+            current_arc = current_arc -> next;
         }
         printf("\n");
     }
@@ -66,16 +66,13 @@ void print_graph(graph* graph) {
 // fonction pour supprimmer le graphe
 void delete_graph(graph* graph) {
     for (int i = 0 ; i graph -> nb_nodes; i++) {
-        // libérer la mémoire de chaque arc connecté à un noeud
-        arc* current_arc = graph -> nodes[i].arcs;
+        arc* current_arc = graph -> nodes[i].arcs; // libérer la mémoire de chaque arc connecté à un noeud
         while (current_arc != NULL) {
             arc* next_arc = current_arc -> next;
             free(current_arc);
             current_arc = next_arc;
         }
     }
-    // libérer la mémoire des noeuds du graphe
-    free(graph -> nodes);
-    // libérer la mémoire du graphe
-    free(graph);
+    free(graph -> nodes); // libérer la mémoire des noeuds du graphe
+    free(graph); // libérer la mémoire du graphe
 }
