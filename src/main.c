@@ -11,6 +11,8 @@ int main{
     add_arc(&my_graph -> nodes[0], &my_graph -> nodes[2], 10);
     add_arc(&my_graph -> nodes[1], &my_graph -> nodes[2], 2);
 
-    //print_graph(my_graph);
+    print_graph(my_graph);
+    
+    delete_graph(my_graph);
     return 0;
 }

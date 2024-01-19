@@ -37,13 +37,13 @@ void add_arc(node* source, node* destination, int data) {
 graph* create_graph(int nb_nodes) {
     graph* new_graph = (graph*)malloc(sizeof(graph));
     if (new_graph != NULL) {
-        graph -> nb_nodes = nb_nodes;
-        graph -> nodes = (node*)malloc(nb_nodes*sizeof(node));
+        new_graph -> nb_nodes = nb_nodes;
+        new_graph -> nodes = (node*)malloc(nb_nodes*sizeof(node));
         // initialisation des noeuds du graphe
         for (int i = 0; i < nb_nodes; i++) {
-            graph -> nodes[i] = *create_node(i);
+            new_graph -> nodes[i] = *create_node(i);
         }
-        return graph;
+        return new_graph;
     }
     return NULL;
 
@@ -64,5 +64,19 @@ void print_graph(graph* graph) {
     }
 }
 
-// fonction pour supprimmer la structure de graphe
-// fonction pour supprimmer les noeuds et arcs
+// fonction pour supprimmer le graphe
+void delete_graph(graph* graph) {
+    for (int i = 0 ; i graph -> nb_nodes; i++) {
+        // libérer la mémoire de chaque arc connecté à un noeud
+        arc* current_arc = graph -> nodes[i].arcs;
+        while (current_arc != NULL) {
+            arc* next_arc = current_arc -> next;
+            free(current_arc);
+            current_arc = next_arc;
+        }
+    }
+    // libérer la mémoire des noeuds du graphe
+    free(graph -> nodes);
+    // libérer la mémoire du graphe
+    free(graph);
+}
