@@ -12,6 +12,7 @@ node* create_node(int data) {
         new_node -> arcs = NULL; // initialise la liste des arcs à NULL
         return new_node ;
     }
+    return NULL;
 }
 
 // fonction pour créer un nouvel arc
@@ -22,6 +23,7 @@ arc* create_arc(node* destination, int data) {
         new_arc -> next = NULL; // initialise le pointeur vers le prochaine arc à NULL
         new_arc -> destination = destination;
     }
+    return NULL;
 }
 
 // fonction pour ajouter un arc à un noeud
@@ -41,7 +43,10 @@ graph* create_graph(int nb_nodes) {
         for (int i = 0; i < nb_nodes; i++) {
             graph -> nodes[i] = *create_node(i);
         }
+        return graph;
     }
+    return NULL;
+
 }
 
 // fonction pour afficher un graphe
