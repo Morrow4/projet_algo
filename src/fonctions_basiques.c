@@ -34,5 +34,10 @@ graph* create_graph(int nb_nodes) {
     graph* new_graph = (graph*)malloc(sizeof(graph))
 }
 
+// fonction pour afficher un graphe
+void print_graph(graph* graph) {
+
+}
+
 // fonction pour supprimmer la structure de graphe
 // fonction pour supprimmer les noeuds et arcs
