@@ -6,6 +6,10 @@
 
 // fonction pour créer un nouveau noeud
 node* create_node(int data) {
+    node* new_node = (node*)malloc(sizeof(node));
+    new_node -> data = data;
+    new_node -> arcs = NULL; // initialise la liste des arcs à NULL
+    return new_node ;
 }
 
 // fonction pour créer un nouvel arc
@@ -20,6 +24,9 @@ arc* create_arc(node* destination, int data) {
 
 // fonction pour ajouter un arc à un noeud
 void add_arc(node* source, node* destination, int data) {
+    arc* new_arc = create_arc(destination, data);
+    new_arc -> next = source -> arcs; // ajoute l'arc au début de la liste
+    source -> arcs = new_arc;
 }
 
 // fonction pour créer un nouveau graphe

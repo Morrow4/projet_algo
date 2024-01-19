@@ -21,7 +21,7 @@ typedef struct arc {
 // Structure de noeud de graphe
 typedef struct node {
     int data; // valeur du noeud
-    struct arc *arc; // liste des arêtes connectés à ce noeud
+    struct arcs *arc; // liste des arêtes connectés à ce noeud
 } node;
 
 #ENDIF STRUCT_H
