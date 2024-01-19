@@ -15,10 +15,10 @@ arc* add_arc(node* source, node* destination, int data);
 graph* create_graph(int nb_nodes);
 void print_graph(graph* graph);
 void delete_graph(graph* graph);
-void bfs(graph* g, int start_node_index);
-void dfs_traversal(graph* graph, int start_node_index);
 
 // parcours
+void bfs(graph* g, int start_node_index);
+void dfs_traversal(graph* graph, int start_node_index);
 
 // degrée
 int in_degree(graph* graph, int node_index);
