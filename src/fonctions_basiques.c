@@ -18,6 +18,9 @@ arc* create_arc(node* destination, int data) {
 
 // fonction pour ajouter un arc à un noeud
 void add_arc(node* source, node* destination, int data) {
+    arc* new_arc = create_arc(destination, data);
+    new_arc -> next = source -> arcs; // ajoute l'arc au début de la liste
+    source -> arcs = new_arc;
 }
 
 // fonction pour créer un nouveau graphe
