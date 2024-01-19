@@ -27,7 +27,7 @@ void bfs(graph* graph, int start_node_i) {
         arc* current_arc = current_node->arcs;
         while (current_arc != NULL) {
             if (!visited[current_arc->destination->data]) {
-                enqueue(q, current_arc->destination);
+                enqueue(queue, current_arc->destination);
                 visited[current_arc->destination->data] = 1;
             }
             current_arc = current_arc->next;
