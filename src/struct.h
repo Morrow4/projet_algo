@@ -14,6 +14,7 @@ typedef struct graph {
 
 // Structure d'arrête de graphe
 typedef struct arc {
+    node* destination; // pointeur vers le noeud de destination
     int data; // valeur de l'arrête
     struct arc *next; // pointeur vers la prochaine arête dans la liste
 } arc;
