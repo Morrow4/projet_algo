@@ -14,7 +14,7 @@ int main{
     print_graph(my_graph);
     
     bfs(my_graph, 0);
-    dfs(my_graph, 0);    
+    dfs_init(my_graph, 0);    
     
     delete_graph(my_graph);
     return 0;

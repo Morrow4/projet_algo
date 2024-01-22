@@ -17,8 +17,9 @@ void print_graph(graph* graph);
 void delete_graph(graph* graph);
 
 // parcours
-void bfs(graph* g, int start_node_index);
-void dfs_traversal(graph* graph, int start_node_index);
+void dfs_parcours(graph* graph, int start_node_index, int* visited);
+void dfs(graph* graph, int start_node_index);
+void bfs(graph* graph, int start_node_index);
 
 // degrée
 int in_degree(graph* graph, int node_index);
