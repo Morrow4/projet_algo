@@ -54,20 +54,24 @@ graph* import_graph(char* filename) {
     FILE *input_file;
     input_file = fopen(filename, "r");
     char *buff;
-    fget(buff, sizeof(buff), input_file);
-    int count = stdlol(buff, NULL, 10);
-    create_graph(count);
+
     if (inputFile == NULL) {
         printf("Cannot open file %s\n", filename);
         exit(0);
     }
+
+    // count
+    fget(buff, sizeof(buff), input_file);
+    int count = stdlol(buff, NULL, 10);
+    create_graph(count);
+
     while (fgets(buff, sizeof(buff), input_file) != NULL) {
-        add_node(buff);
-        if (node_destination == NULL) {
-            create_node(data_destination);
+        add_node(data, ID); // ajoute le noeud source
+        if (node_destination == NULL) { // si le noeud de destination n'existe pas
+            add_node(data, ID); // ajoute le noeud de destination
         }
-        add_arc(source, destination, data);
+        add_arc(source, destination, data); // ajoute l'arc de la source vers la destination
     }
     fclose(input_file);
-    return graph
+    return graph;
 }

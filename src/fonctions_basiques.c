@@ -5,12 +5,12 @@
 /* Fonctions basiques pour la structure de graphe */
 
 // fonction pour créer un nouveau noeud
-node* create_node(int data) {
+node* create_node(int data, int ID) {
     node* new_node = (node*)malloc(sizeof(node));
     if (new_node != NULL) {
         new_node -> data = data;
         new_node -> arcs = NULL; // initialise la liste des arcs à NULL
-        new_node -> ID = NULL; // initialise l'ID du noeud à NULL
+        new_node -> ID = ID; // initialise l'ID du noeud à NULL
         return new_node ;
     }
     return NULL;
@@ -37,8 +37,8 @@ arc* add_arc(node* source, node* destination, int data) {
 }
 
 // fonction pour ajouter un noeud à un graphique
-graph* add_node(int data, graph* graph) {
-    node* new_node = create_node(data);
+graph* add_node(int data, graph* graph, int ID) {
+    node* new_node = create_node(data, ID);
     int i = 0;
     while(graph -> *nodes[i] != NULL) {
     i++;
