@@ -77,3 +77,4 @@ void delete_graph(graph* graph) {
     free(graph -> nodes); // libérer la mémoire des noeuds du graphe
     free(graph); // libérer la mémoire du graphe
 }
+
