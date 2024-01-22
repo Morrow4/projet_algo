@@ -31,7 +31,7 @@ char* export_graph(char* filename, graph* graph) {
     return filename;
 }
 
-graph* import_graph(char* filename) {
+graph* import_graph(char* filename) {   
     FILE *input_file;
     input_file = fopen(filename, "r");
     char *buff;
