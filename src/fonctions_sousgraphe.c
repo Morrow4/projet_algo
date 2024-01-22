@@ -42,10 +42,10 @@ graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs) {
     if (graph == NULL || tabArcs == NULL || nb_arcs <= 0) {
         return NULL;
     }
-
+    
     // Créer un nouveau graphe pour le sous-graphe partiel
     graph* sousgraphe2 = create_graph(graph->nb_nodes);
-
+    
     // Copier les nœuds du graphe d'origine dans le sous-graphe partiel
     for (int i = 0; i < graph->nb_nodes; i++) {
         sousgraphe2->nodes[i].data = graph->nodes[i].data;

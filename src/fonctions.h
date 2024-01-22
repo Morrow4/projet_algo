@@ -26,4 +26,8 @@ int in_degree(graph* graph, int node_index);
 int out_degree(graph* graph, int node_index);
 int total_degree(graph* graph, int node_index);
 
+//sousgraphe
+graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes);
+graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs);
+
 #ENDIF FONCTIONS_BASIQUES_H
