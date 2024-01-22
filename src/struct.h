@@ -25,4 +25,16 @@ typedef struct node {
     struct arcs *arc; // liste des arêtes connectés à ce noeud
 } node;
 
+// Structure element
+typedef struct Element {
+    int valeur;
+    struct Element* suivant;
+} Element;
+
+// Structure file
+typedef struct File {
+    Element* tete;
+    Element* queue;
+} File;
+
 #ENDIF STRUCT_H
