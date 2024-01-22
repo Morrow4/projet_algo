@@ -35,6 +35,17 @@ arc* add_arc(node* source, node* destination, int data) {
     return new_arc;
 }
 
+// fonction pour ajouter un noeud à un graphique
+graph* add_node(node* node, graph* graph) {
+    int i = 0;
+    while(graph -> *nodes[i] != NULL) {
+    i++;
+    } 
+    graph -> *nodes[i] = node;
+    return graph;
+
+}
+
 // fonction pour créer un nouveau graphe
 graph* create_graph(int nb_nodes) {
     graph* new_graph = (graph*)malloc(sizeof(graph));
@@ -77,4 +88,3 @@ void delete_graph(graph* graph) {
     free(graph -> nodes); // libérer la mémoire des noeuds du graphe
     free(graph); // libérer la mémoire du graphe
 }
-

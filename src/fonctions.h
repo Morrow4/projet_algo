@@ -1,4 +1,3 @@
-
 /* Déclarations des fonctions */
 
 #IFNDEF FONCTIONS_BASIQUES_H
@@ -12,6 +11,7 @@
 node* create_node(int data);
 arc* create_arc(node* destination, int data);
 arc* add_arc(node* source, node* destination, int data);
+graph* add_node(node* node, graph* graph);
 graph* create_graph(int nb_nodes);
 void print_graph(graph* graph);
 void delete_graph(graph* graph);

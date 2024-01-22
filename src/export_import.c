@@ -43,7 +43,7 @@ graph* import_graph(char* filename) {
         exit(0);
     }
     while (fgets(buff, sizeof(buff), input_file) != NULL) {
-        
+        create_node(buff);
     }
     return graph*
     fclose(input_file);
