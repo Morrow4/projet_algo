@@ -30,4 +30,8 @@ int total_degree(graph* graph, int node_index);
 graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes);
 graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs);
 
+// import export
+char* export_graph(char* filename, graph* graph);
+graph* import_graph(char* filename);
+
 #ENDIF FONCTIONS_BASIQUES_H

@@ -7,6 +7,9 @@ char* export_graph(char* filename, graph* graph) {
     FILE *input_file;
     char *buff;
     input_file = fopen(filename, "w");
+    int count = graph -> nb_nodes;
+    sprintf(buff,"%d", count);
+    fprintf(FILE* input_file, "count\n");
     if (inputFile == NULL) {
         printf("Cannot open file %s\n", filename);
         exit(0);
@@ -32,7 +35,9 @@ graph* import_graph(char* filename) {
     FILE *input_file;
     input_file = fopen(filename, "r");
     char *buff;
-    create_graph(100);
+    fget(buff, sizeof(buff), input_file);
+    int count = stdlol(buff, NULL, 10);
+    create_graph(count);
     if (inputFile == NULL) {
         printf("Cannot open file %s\n", filename);
         exit(0);
