@@ -16,6 +16,8 @@ int main{
     bfs(my_graph, 0);
     dfs_init(my_graph, 0);    
     
+    sousgraphe1(my_graph, int* tabIndice, int nb_nodes);//a modifier
+    sousgraphe2(my_graph, int* tabArcs, int nb_arcs);//a modifier
     delete_graph(my_graph);
     return 0;
 }
