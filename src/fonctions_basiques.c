@@ -36,12 +36,13 @@ arc* add_arc(node* source, node* destination, int data) {
 }
 
 // fonction pour ajouter un noeud à un graphique
-graph* add_node(node* node, graph* graph) {
+graph* add_node(int data, graph* graph) {
+    node* new_node = create_node(data);
     int i = 0;
     while(graph -> *nodes[i] != NULL) {
     i++;
     } 
-    graph -> *nodes[i] = node;
+    graph -> *nodes[i] = new_node;
     return graph;
 
 }
