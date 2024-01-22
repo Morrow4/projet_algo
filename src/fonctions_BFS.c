@@ -4,12 +4,24 @@
 #include "struct.h"
 #include "fonctions_basiques.h"
 
+//structure element
+typedef struct Element {
+    int valeur;
+    struct Element* suivant;
+} Element;
+
+//structure file
+typedef struct File {
+    Element* tete;
+    Element* queue;
+} File;
+
 // Fonction de parcours en largeur (BFS)
 void bfs(graph* graph, int start_node_index) {
     if (graph == NULL || start_node_index < 0 || start_node_index >= graph -> nb_nodes) {
         return;
     }
-    queue* q = create_queue();
+    File* q = create_queue();
     int* visited = (int*)calloc(graph -> nb_nodes, sizeof(int));
     if (q == NULL || visited == NULL) {
         return;
