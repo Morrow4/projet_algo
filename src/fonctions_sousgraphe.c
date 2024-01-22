@@ -37,62 +37,41 @@ graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes) {
     return sousgraphe1;
 }
 
-//sous-graphe G'' defini par un sous-ensemble d'arcs à retirer de A
-void sousgraphe2(graph* graph, int start_node_index){
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fonction pour créer un sous-graphe partiel en retirant un ensemble d'arcs
-void subgraph_partial(graph* graph, int* arcs_to_remove, int num_arcs_to_remove) {
-    if (graph == NULL || arcs_to_remove == NULL || num_arcs_to_remove <= 0) {
-        return;
+// fonction pour créer un sous-graphe partiel défini par un sous-ensemble d'arcs à retirer
+graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs) {
+    if (graph == NULL || tabArcs == NULL || nb_arcs <= 0) {
+        return NULL;
     }
 
-    // Parcourir chaque arc à retirer
-    for (int i = 0; i < num_arcs_to_remove; i++) {
-        int arc_index = arcs_to_remove[i];
+    // Créer un nouveau graphe pour le sous-graphe partiel
+    graph* sousgraphe2 = create_graph(graph->nb_nodes);
 
-        // Vérifier si l'indice de l'arc est valide
-        if (arc_index >= 0 && arc_index < graph->nb_nodes) {
-            // Retirer l'arc de la liste des arcs du nœud correspondant
-            int source_node_index = arc_index / graph->nb_nodes;
-            int dest_node_index = arc_index % graph->nb_nodes;
+    // Copier les nœuds du graphe d'origine dans le sous-graphe partiel
+    for (int i = 0; i < graph->nb_nodes; i++) {
+        sousgraphe2->nodes[i].data = graph->nodes[i].data;
 
-            node* source_node = &(graph->nodes[source_node_index]);
-            arc* current_arc = source_node->arcs;
-            arc* previous_arc = NULL;
+        // Copier les arcs du nœud correspondant dans le graphe original
+        arc* current_arc = graph->nodes[i].arcs;
+        while (current_arc != NULL) {
+            int current_arc_data = current_arc->data;
 
-            // Parcourir la liste des arcs pour trouver celui à retirer
-            while (current_arc != NULL && current_arc->destination->data != dest_node_index) {
-                previous_arc = current_arc;
-                current_arc = current_arc->next;
-            }
-
-            // Retirer l'arc de la liste
-            if (current_arc != NULL) {
-                if (previous_arc != NULL) {
-                    previous_arc->next = current_arc->next;
-                } else {
-                    source_node->arcs = current_arc->next;
+            // Vérifier si l'arc doit être exclu du sous-graphe partiel
+            int exclude_arc = 0;
+            for (int j = 0; j < nb_arcs; j++) {
+                if (tabArcs[j] == current_arc_data) {
+                    exclude_arc = 1;
+                    break;
                 }
-                free(current_arc);
             }
+
+            if (!exclude_arc) {
+                // Ajouter l'arc dans le sous-graphe partiel
+                add_arc(&(sousgraphe2->nodes[i]), current_arc->destination, current_arc_data);
+            }
+
+            current_arc = current_arc->next;
         }
     }
+
+    return sousgraphe2;
 }

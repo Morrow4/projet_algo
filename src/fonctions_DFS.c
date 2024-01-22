@@ -5,7 +5,7 @@
 #include "fonctions_basiques.h"
 
 // Fonction de parcours en profondeur (DFS)
-void dfs(graph* graph, int start_node_index, int* visited) {
+void dfs_parcours(graph* graph, int start_node_index, int* visited) {
     if (graph == NULL || start_node_index < 0 || start_node_index >= graph -> nb_nodes) {
         return;
     }
@@ -21,7 +21,7 @@ void dfs(graph* graph, int start_node_index, int* visited) {
 }
 
 // Fonction d'initialisation pour le parcours en profondeur (DFS)
-void dfs_traversal(graph* graph, int start_node_index) {
+void dfs(graph* graph, int start_node_index) {
     if (graph == NULL || start_node_index < 0 || start_node_index >= graph -> nb_nodes) {
         return;
     }
