@@ -21,6 +21,7 @@ typedef struct arc {
 
 // Structure de noeud de graphe
 typedef struct node {
+    int ID; // node ID
     int data; // valeur du noeud
     struct arcs *arc; // liste des arêtes connectés à ce noeud
 } node;

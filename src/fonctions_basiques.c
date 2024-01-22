@@ -10,6 +10,7 @@ node* create_node(int data) {
     if (new_node != NULL) {
         new_node -> data = data;
         new_node -> arcs = NULL; // initialise la liste des arcs à NULL
+        new_node -> ID = NULL; // initialise l'ID du noeud à NULL
         return new_node ;
     }
     return NULL;
@@ -43,6 +44,7 @@ graph* add_node(int data, graph* graph) {
     i++;
     } 
     graph -> *nodes[i] = new_node;
+    new_node -> ID = i;
     return graph;
 
 }

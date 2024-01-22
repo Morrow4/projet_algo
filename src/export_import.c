@@ -45,10 +45,10 @@ graph* import_graph(char* filename) {
     while (fgets(buff, sizeof(buff), input_file) != NULL) {
         create_node(buff);
         if (node_destination == NULL) {
-            create_node();
+            create_node(data_destination);
         }
-        add_arc
+        add_arc(source, destination, data);
     }
-    return graph*
     fclose(input_file);
+    return graph
 }
