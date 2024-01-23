@@ -20,7 +20,7 @@ build: $(SRC)
 	$(CC) $(SRC) -o $(TARGET) -lm
 
 # Launch target file
-launch:
+launch:	$(TARGET)
 	./$(TARGET)
 
 # Clean object files
