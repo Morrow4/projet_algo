@@ -10,7 +10,7 @@ int main() {
 
     // Ajout des nœuds au graphe
     for (int i = 0; i < 6; i++) {
-        add_node(0, my_graph, i); // Vous devez spécifier la valeur correcte pour les données des nœuds
+        add_node(0, my_graph, i);
     }
 
     // Ajout des arcs au graphe
@@ -28,7 +28,7 @@ int main() {
     print_graph(my_graph);
     breadth_first_search(my_graph, 5);
     depth_first_search(my_graph, 2);
-    
+
     // Vérification si le graphe est connexe
     if (is_strongly_connected(my_graph)) {
         printf("Le graphe est fortement connexe.\n");
