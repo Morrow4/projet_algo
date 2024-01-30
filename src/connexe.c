@@ -2,21 +2,6 @@
 #include <stdlib.h>
 #include "struct.h"
 
-// Fonction pour vérifier si un graphe orienté est fortement connexe
-int is_strongly_connected(struct graph* graph) {
-    // Vérification des arguments
-    if (graph == NULL || graph->head == NULL) {
-        printf("Invalid graph!\n");
-        return 0; // False, car le graphe est invalide ou vide
-    }
-
-    // Vérifier si le graphe est connexe dans les deux directions
-    if (dfs_strongly_connected(graph, 0) && dfs_strongly_connected(reverse_graph(graph), 0)) {
-        return 1; // True, le graphe est fortement connexe
-    }
-    return 0; // False, le graphe n'est pas fortement connexe
-}
-
 // Fonction auxiliaire pour vérifier la connectivité forte en utilisant DFS
 int dfs_strongly_connected(struct graph* graph, int node_id) {
     // Initialisation des nœuds visités
@@ -43,6 +28,23 @@ int dfs_strongly_connected(struct graph* graph, int node_id) {
     free(visited);
     return 1; // True, le graphe est fortement connexe
 }
+
+// Fonction pour vérifier si un graphe orienté est fortement connexe
+int is_strongly_connected(struct graph* graph) {
+    // Vérification des arguments
+    if (graph == NULL || graph->head == NULL) {
+        printf("Invalid graph!\n");
+        return 0; // False, car le graphe est invalide ou vide
+    }
+
+    // Vérifier si le graphe est connexe dans les deux directions
+    if (dfs_strongly_connected(graph, 0) && dfs_strongly_connected(reverse_graph(graph), 0)) {
+        return 1; // True, le graphe est fortement connexe
+    }
+    return 0; // False, le graphe n'est pas fortement connexe
+}
+
+
 
 // Fonction pour récupérer les composantes fortement connexes d'un graphe orienté
 void get_strongly_connected_components(struct graph* graph) {
