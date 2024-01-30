@@ -9,7 +9,7 @@ struct node* create_node(int data, int ID) {
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
     if (new_node != NULL) {
         new_node -> data = data;
-        new_node -> arcs = NULL; // initialise la liste
+        new_node -> arc = NULL; // initialise la liste
         new_node -> ID = ID; // initialise l'ID du noeud
         return new_node ;
     }
@@ -31,8 +31,8 @@ struct arc* create_arc(struct node* destination, int data) {
 // fonction pour ajouter un arc à un noeud
 struct arc* add_arc(struct node* source,struct node* destination, int data) {
     struct arc* new_arc = create_arc(destination, data);
-    new_arc -> next = source -> arcs; // ajoute l'arc au début de la liste
-    source -> arcs = new_arc;
+    new_arc -> next = source -> arc; // ajoute l'arc au début de la liste
+    source -> arc = new_arc;
     return new_arc;
 }
 
