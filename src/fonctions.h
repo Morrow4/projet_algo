@@ -19,6 +19,7 @@ void push(struct stack** top,struct node* node);
 struct node* pop(struct stack** top);
 void queue_push(struct queue* q, struct node* node);
 struct node* queue_pop(struct queue* q);
+
 // parcours
 void depth_first_search(struct graph* graph, int source);
 void breadth_first_search(graph* graph, int source);
