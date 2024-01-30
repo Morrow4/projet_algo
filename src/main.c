@@ -52,12 +52,12 @@ int main() {
     //struct graph* my_graph_3 = sousgraphePartiel(my_graph, tabArcs, nb_arcs);
     //print_graph(my_graph_2);
     //print_graph(my_graph_3);
-    */
+
     // Recherche du plus court chemin entre deux sommets
     int source = 0;
     int destination = 5;
     shortest_path(my_graph, source, destination);
-    
+    */
     // Libération de la mémoire allouée pour le graphe
     delete_graph(my_graph);
     return 0;
