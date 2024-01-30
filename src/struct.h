@@ -39,4 +39,10 @@ typedef struct queue
     queue_element* head;
 };
 
+// Structure de pile pour stocker les nœuds à visiter
+typedef struct stack {
+    node* data;
+    struct stack* n;
+};
+
 #endif STRUCT_H

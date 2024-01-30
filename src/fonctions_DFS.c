@@ -6,16 +6,49 @@
 
 // Fonction de parcours en profondeur (DFS)
 
-node* dfs_graph(graph* graph, int val) {
-    if (graph -> nodes == NULL) {
-        return NULL ;
+void depth_first_search(graph* graph, int source) {
+    // Vérification des arguments
+    if (graph == NULL || graph->nodes == NULL) {
+        printf("Invalid graph!\n");
+        return;
     }
-    node** node_array = graph -> nodes;
-    int i = 0;
-    while (node_array[i] != NULL) {
-        if (node_array[i] -> data == val) {
-            return node_array[i];
+
+    // Initialisation des nœuds visités
+    int* visited = (int*)malloc(sizeof(int) * graph->nb_nodes);
+    if (visited == NULL) {
+        printf("Memory allocation failed!\n");
+        return;
+    }
+    for (int i = 0; i < graph->nb_nodes; i++) {
+        visited[i] = 0;
+    }
+
+    // Création de la pile pour stocker les nœuds à visiter
+    Stack* stack = NULL;
+
+    // Empiler le nœud source
+    push(&stack, &(graph->nodes[source]));
+
+    // Parcours en profondeur
+    while (stack != NULL) {
+        Node* current = pop(&stack);
+
+        // Si le nœud n'a pas été visité
+        if (!visited[current->ID]) {
+            printf("Visited node: %d\n", current->ID);
+            visited[current->ID] = 1; // Marquer le nœud comme visité
+
+            // Empiler tous les nœuds adjacents non visités
+            Arc* arc = current->arc;
+            while (arc != NULL) {
+                if (!visited[arc->destination->ID]) {
+                    push(&stack, arc->destination);
+                }
+                arc = arc->next;
+            }
         }
-        i++;    
     }
+
+    // Libération de la mémoire
+    free(visited);
 }
