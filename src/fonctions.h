@@ -1,7 +1,7 @@
 /* Déclarations des fonctions */
 
-#ifndef FONCTIONS_BASIQUES_H
-#define FONCTIONS_BASIQUES_H
+#ifndef FONCTIONS_H
+#define FONCTIONS_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,4 +33,4 @@ graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs);
 char* export_graph(char* filename, graph* graph);
 graph* import_graph(char* filename);
 
-#endif FONCTIONS_BASIQUES_H
+#endif FONCTIONS_H
