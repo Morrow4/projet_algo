@@ -93,8 +93,8 @@ void delete_graph(graph* graph) {
 }
 
 // fonction pour empiler un noeud
-void push(Stack** top, Node* node) {
-    Stack* new_node = (Stack*)malloc(sizeof(Stack));
+void push(stack** top, node* node) {
+    stack* new_node = (stack*)malloc(sizeof(stack));
     if (new_node == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
@@ -105,13 +105,13 @@ void push(Stack** top, Node* node) {
 }
 
 // Fonction pour dépiler un nœud
-Node* pop(Stack** top) {
+node* pop(stack** top) {
     if (*top == NULL) {
         printf("Stack underflow!\n");
         exit(EXIT_FAILURE);
     }
-    Node* node = (*top)->data;
-    Stack* temp = *top;
+    node* node = (*top)->data;
+    stack* temp = *top;
     *top = (*top)->next;
     free(temp);
     return node;
