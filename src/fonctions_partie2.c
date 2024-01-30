@@ -33,7 +33,7 @@ int detect_circuit(graph* graph){
     return 0;
 }
 //Fonction qui retourne le circuit
-int retour_circuit(graphe* graph){
+int retour_circuit(graph* graph){
     for (int i = 0; i < graph->nb_nodes; i++) {
         if (graph->nodes[i].arcs != NULL) {
 
