@@ -69,7 +69,7 @@ void print_graph(struct graph* graph) {
     printf("Graph with %d nodes:\n", graph -> nb_nodes);
     for (int i = 0; i < graph -> nb_nodes; i++) {
         printf("Node %d [data: %d] -> ", i, graph -> nodes[i].data);
-        arc* current_arc = graph -> nodes[i].arcs;
+        arc* current_arc = graph -> nodes[i].arc;
         while (current_arc != NULL) {
             printf("[Arc: Node %d | data=%d] ", current_arc -> destination -> data, current_arc -> data);
             current_arc = current_arc -> next;
@@ -81,7 +81,7 @@ void print_graph(struct graph* graph) {
 // fonction pour supprimmer le graphe
 void delete_graph(struct graph* graph) {
     for (int i = 0 ; i graph -> nb_nodes; i++) {
-        struct arc* current_arc = graph -> nodes[i].arcs; // libérer la mémoire de chaque arc connecté à un noeud
+        struct arc* current_arc = graph -> nodes[i].arc; // libérer la mémoire de chaque arc connecté à un noeud
         while (current_arc != NULL) {
             arc* next_arc = current_arc -> next;
             free(current_arc);
