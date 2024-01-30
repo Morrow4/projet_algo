@@ -4,35 +4,57 @@
 #include "struct.h"
 #include "fonctions.h"
 
-/* Breadth-First Search (BFS) */
+// Fonction de parcours en largeur sur le graphe
+void breadth_first_search(graph* graph, int source) {
+    // Vérification des arguments
+    if (graph == NULL || graph->head == NULL) {
+        printf("Invalid graph!\n");
+        return;
+    }
 
-void bfs(graph* graph, int start_node_index) {
-    // Initialisation
-    int* visited = (int*)malloc(graph->nb_nodes * sizeof(int));
-    for (int i = 0; i < graph->nb_nodes; ++i) {
+    // Initialisation des nœuds visités
+    int* visited = (int*)malloc(sizeof(int) * graph->nb_nodes);
+    if (visited == NULL) {
+        printf("Memory allocation failed!\n");
+        return;
+    }
+    for (int i = 0; i < graph->nb_nodes; i++) {
         visited[i] = 0;
     }
 
-    struct queue* q = (struct queue*)malloc(sizeof(struct queue));
-    q->tete = NULL;
-    enqueue(q, &graph->nodes[start_node_index]); // Enfiler le nœud initial
-    visited[start_node_index] = 1; // Marquer le nœud initial comme visité
+    // Création de la file pour stocker les nœuds à visiter
+    queue* queue = (queue*)malloc(sizeof(queue));
+    if (queue == NULL) {
+        printf("Memory allocation failed!\n");
+        free(visited);
+        return;
+    }
+    queue->head = NULL;
 
-    // Boucle principale
-    while (!is_empty(q)) {
-        node* current_node = dequeue(q); // Défiler un nœud
-        printf("%d ", current_node->data);
+    // Ajouter le nœud source à la file
+    enqueue(queue, graph->head);
 
-        arc* current_arc = current_node->arc; // Explorer les voisins du nœud actuel
-        while (current_arc != NULL) {
-            if (!visited[current_arc->destination->ID]) {
-                // Enfiler les nœuds non visités
-                enqueue(q, current_arc->destination);
-                visited[current_arc->destination->ID] = 1;
+    // Parcours en largeur
+    while (!is_empty(queue)) {
+        node* current = dequeue(queue);
+
+        // Si le nœud n'a pas été visité
+        if (!visited[current->ID]) {
+            printf("Visited node: %d\n", current->ID);
+            visited[current->ID] = 1; // Marquer le nœud comme visité
+
+            // Ajouter tous les nœuds adjacents non visités à la file
+            arc* arc = current->arc;
+            while (arc != NULL) {
+                if (!visited[arc->destination->ID]) {
+                    enqueue(queue, arc->destination);
+                }
+                arc = arc->next;
             }
-            current_arc = current_arc->next;
         }
     }
+
+    // Libération de la mémoire
+    free_queue(queue);
     free(visited);
-    free(q);
 }
