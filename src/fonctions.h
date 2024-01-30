@@ -11,7 +11,7 @@
 struct node* create_node(int data, int ID);
 struct arc* create_arc(struct node* destination, int data);
 struct arc* add_arc(struct node* source,struct node* destination, int data);
-struct graph* add_node(int data,struct graph* graph, int iD);
+struct graph* add_node(int data, struct graph* graph, int ID);
 struct graph* create_graph(int nb_nodes);
 void print_graph(struct graph* graph);
 void delete_graph(struct graph* graph);

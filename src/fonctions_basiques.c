@@ -45,17 +45,17 @@ struct graph* add_node(int data, struct graph* graph, int ID) {
         exit(EXIT_FAILURE);
     }
     new_node = create_node(data, ID);
-    
+
     // Si le graphe est vide
-    if (graph_ptr->head == NULL) {
-        graph_ptr->head = new_node;
+    if (graph->head == NULL) {
+        graph->head = new_node;
     } else {
         // Parcourir jusqu'à la fin pour ajouter le nouveau nœud
-        node* current = graph_ptr->head;
+        struct node* current = graph->head;
         while (current->arc != NULL) {
             current = current->arc->destination;
         }
-        current->arc = (arc*)malloc(sizeof(arc));
+        current->arc = (struct arc*)malloc(sizeof(struct arc));
         if (current->arc == NULL) {
             printf("Memory allocation failed!\n");
             exit(EXIT_FAILURE);
