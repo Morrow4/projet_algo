@@ -5,7 +5,8 @@
 #include "fonctions.h"
 
 // Fonction de parcours en largeur sur le graphe
-void breadth_first_search(graph* graph, int source) {
+// Fonction de parcours en largeur sur le graphe en utilisant une file
+void breadth_first_search(struct graph* graph, int source) {
     // Vérification des arguments
     if (graph == NULL || graph->head == NULL) {
         printf("Invalid graph!\n");
@@ -23,31 +24,31 @@ void breadth_first_search(graph* graph, int source) {
     }
 
     // Création de la file pour stocker les nœuds à visiter
-    struct queue* queue = (struct queue*)malloc(sizeof(struct queue));
-    if (queue == NULL) {
+    struct queue* q = (struct queue*)malloc(sizeof(struct queue));
+    if (q == NULL) {
         printf("Memory allocation failed!\n");
         free(visited);
         return;
     }
-    queue->head = NULL;
+    q->head = NULL;
 
-    // Ajouter le nœud source à la file
-    enqueue(queue, graph->head);
+    // Enfiler le nœud source
+    queue_push(q, graph->head);
 
     // Parcours en largeur
-    while (!is_empty(queue)) {
-        node* current = dequeue(queue);
+    while (q->head != NULL) {
+        struct node* current = queue_pop(q);
 
         // Si le nœud n'a pas été visité
         if (!visited[current->ID]) {
             printf("Visited node: %d\n", current->ID);
             visited[current->ID] = 1; // Marquer le nœud comme visité
 
-            // Ajouter tous les nœuds adjacents non visités à la file
-            arc* arc = current->arc;
+            // Enfiler tous les nœuds adjacents non visités
+            struct arc* arc = current->arc;
             while (arc != NULL) {
                 if (!visited[arc->destination->ID]) {
-                    enqueue(queue, arc->destination);
+                    queue_push(q, arc->destination);
                 }
                 arc = arc->next;
             }
@@ -55,6 +56,6 @@ void breadth_first_search(graph* graph, int source) {
     }
 
     // Libération de la mémoire
-    free_queue(queue);
     free(visited);
+    free(q);
 }
