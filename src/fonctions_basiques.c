@@ -100,7 +100,7 @@ void push(struct stack** top,struct node* node) {
         exit(EXIT_FAILURE);
     }
     new_node->data = node;
-    new_node->next = *top;
+    new_node->n = *top;
     *top = new_node;
 }
 
@@ -112,7 +112,7 @@ struct node* pop(struct stack** top) {
     }
     node* node = (*top)->data;
     struct stack* temp = *top;
-    *top = (*top)->next;
+    *top = (*top)->n;
     free(temp);
     return node;
 }
