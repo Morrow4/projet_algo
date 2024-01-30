@@ -8,7 +8,7 @@
 // fonction detecter si chemin est un circuit
 // Si un chemin (s_0-s_k) contient au moins un arc
 // Fonction pour vérifier s'il y a au moins un arc dans le graphe
-int detect_arc(graph* graph) {
+int detect_arc(struct graph* graph) {
     if (graph == NULL) {
         return 0;
     }
