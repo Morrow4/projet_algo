@@ -40,7 +40,7 @@ struct arc* add_arc(struct node* source,struct node* destination, int data) {
 struct graph* add_node(int data,struct graph* graph, int ID) {
     struct node* new_node = create_node(data, ID);
     int i = 0;
-    while(graph -> *(nodes[i]) != NULL) {
+    while(graph -> nodes[i] != NULL) {
     i++;
     } 
     graph -> *nodes[i] = new_node;
