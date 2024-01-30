@@ -116,7 +116,7 @@ struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs) 
 
             if (!exclude_arc) {
                 // Ajouter l'arc dans le sous-graphe partiel
-                add_arc(&(sousgraphePartiel->head[i]), current_arc->destination, current_arc_data);
+                add_arc(sousgraphePartiel, &(sousgraphePartiel->head[i]), current_arc->destination, current_arc_data);
             }
             current_arc = current_arc->next;
         }
