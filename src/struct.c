@@ -65,32 +65,40 @@ void add_arc(struct graph* graph, int source_id, int destination_id, int data) {
 }
 
 
-// Fonction pour ajouter un noeud à un graphe
-struct graph* add_node(int data, struct graph* graph_ptr, int ID) {
+// Fonction pour ajouter un nœud à un graphe
+struct graph* add_node(int data,struct graph* graph_ptr, int ID) {
     // Créer un nouveau nœud
-    struct node* new_node = create_node(data, ID);
+    struct node* new_node = (struct node*)malloc(sizeof(struct node));
+    if (new_node == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+    new_node->ID = ID;
+    new_node->data = data;
+    new_node->arc = NULL;
 
     // Si le graphe est vide
     if (graph_ptr->head == NULL) {
         graph_ptr->head = new_node;
     } else {
         // Parcourir jusqu'à la fin pour ajouter le nouveau nœud
-        struct node* current = graph_ptr->head;
-        while (current->arc != NULL) {
-            current = current->arc->destination;
-        }
-        current->arc = (struct arc*)malloc(sizeof(struct arc));
-        if (current->arc == NULL) {
+        struct arc* current = (struct arc*)malloc(sizeof(struct arc));
+        if (current == NULL) {
             printf("Memory allocation failed!\n");
             exit(EXIT_FAILURE);
         }
-        current->arc->destination = new_node;
-        current->arc->data = 0; // Valeur d'arête par défaut
-        current->arc->next = NULL;
+        current = graph_ptr->head->arc;
+        while (current != NULL) {
+            current = current->next;
+        }
+        current->destination = new_node;
+        current->data = 0; // Valeur d'arête par défaut
+        current->next = NULL;
     }
     graph_ptr->nb_nodes++;
     return graph_ptr;
 }
+
 
 // Fonction pour créer un nouveau graphe avec un nombre spécifié de nœuds
 struct graph* create_graph(int nb_nodes) {

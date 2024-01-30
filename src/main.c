@@ -7,12 +7,17 @@ int main() {
 
     // Création d'un graphe
     struct graph* my_graph = create_graph(6);
-    my_graph = add_node(0, my_graph, 0)
-    /*
+
     // Ajout des nœuds au graphe
-    for (int i = 0; i < 6; i++) {
-        my_graph = add_node(0, my_graph, i);
-    }
+    my_graph = add_node(0, my_graph, 0);
+
+    my_graph = add_node(1, my_graph, 1);
+        /*
+    my_graph = add_node(2, my_graph, 2);
+    my_graph = add_node(3, my_graph, 3);
+    my_graph = add_node(4, my_graph, 4);
+    my_graph = add_node(5, my_graph, 5);
+
 
     // Ajout des arcs au graphe
     add_arc(my_graph, 0, 1, 4); // De A à B avec poids 4
