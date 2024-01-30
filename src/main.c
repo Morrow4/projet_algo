@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
-#include "fonctions_basiques.h"
+#include "fonctions"
 
 int main{
     // Exemple d'utilisation
