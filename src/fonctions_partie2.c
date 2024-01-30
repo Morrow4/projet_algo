@@ -24,7 +24,7 @@ int detect_arc(graph* graph) {
     return 0;
 }
 
-int detect_circuit(graph* graph){
+int detect_circuit(struct graph* graph){
     if (detect_arc(graph)==1){
         printf("Le graphe est un circuit\n");
     }else{
@@ -33,7 +33,7 @@ int detect_circuit(graph* graph){
     return 0;
 }
 // Fonction qui retourne le circuit
-int retour_circuit(graph* graph){
+int retour_circuit(struct graph* graph){
     for (int i = 0; i < graph->nb_nodes; i++) {
         if (graph->nodes[i].arcs != NULL) {
 
