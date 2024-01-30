@@ -55,4 +55,8 @@ void dfs_visit(struct graph* graph, int node_id, int* visited);
 void dfs_visit_with_finish_order(struct graph* graph, int node_id, int* visited, struct stack** finish_order);
 void dfs_print_connected_component(struct graph* graph, int node_id, int* visited);
 
+// complet
+int is_complete_graph(struct graph* graph);
+int complete_graph_order(struct graph* graph);
+
 #endif
