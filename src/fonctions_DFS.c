@@ -4,11 +4,10 @@
 #include "struct.h"
 #include "fonctions.h"
 
-// Fonction de parcours en profondeur (DFS)
-
+// Fonction de parcours en profondeur sur le graphe
 void depth_first_search(graph* graph, int source) {
     // Vérification des arguments
-    if (graph == NULL || graph->nodes == NULL) {
+    if (graph == NULL || graph->head == NULL) {
         printf("Invalid graph!\n");
         return;
     }
@@ -27,7 +26,7 @@ void depth_first_search(graph* graph, int source) {
     stack* stack = NULL;
 
     // Empiler le nœud source
-    push(&stack, &(graph->nodes[source]));
+    push(&stack, graph->head);
 
     // Parcours en profondeur
     while (stack != NULL) {
