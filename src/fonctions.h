@@ -29,7 +29,7 @@ int in_degree(struct graph* graph, int node_id);
 int out_degree(struct graph* graph, int node_id);
 int total_degree(struct graph* graph, int node_id);
 
-//sousgraphe
+//sous_graphe
 struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes);
 struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs);
 
@@ -37,4 +37,9 @@ struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs);
 void export_graph(struct graph* graph, const char* filename);
 struct graph* import_graph(const char* filename);
 
-#endif //FONCTIONS_H4
+// circuit
+int is_circuit_in_path(struct graph* graph, int* path, int path_length);
+int contains_circuit(struct graph* graph);
+int* find_circuit(struct graph* graph);
+
+#endif
