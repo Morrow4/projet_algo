@@ -76,7 +76,7 @@ struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes
                     struct node* dest_node = get_node_by_index(sousgrapheInduit, dest_node_index);
 
                     // Ajouter l'arc dans le sous-graphe induit
-                    add_arc(new_node, dest_node, current_arc->data);
+                    add_arc(sousgrapheInduit, dest_node, current_arc->data);
                     break;
                 }
             }
