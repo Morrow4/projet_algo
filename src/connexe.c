@@ -173,7 +173,7 @@ void get_strongly_connected_components(struct graph* graph) {
 
     // Parcourir les nœuds du graphe transposé en utilisant l'ordre de fin de visite inverse
     while (finish_order != NULL) {
-        int node_id = pop(&finish_order)->data->ID;
+        int node_id = pop(&finish_order)->ID;
         if (!visited[node_id]) {
             printf("Composante fortement connexe : ");
             dfs_print_connected_component(transposed_graph, node_id, visited);
