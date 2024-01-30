@@ -68,14 +68,7 @@ void add_arc(struct graph* graph, int source_id, int destination_id, int data) {
 // Fonction pour ajouter un noeud à un graphe
 struct graph* add_node(int data, struct graph* graph_ptr, int ID) {
     // Créer un nouveau nœud
-    struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    if (new_node == NULL) {
-        printf("Memory allocation failed!\n");
-        exit(EXIT_FAILURE);
-    }
-    new_node->data = data;
-    new_node->ID = ID;
-    new_node->arc = NULL;
+    struct node* new_node = create_node(data, ID);
 
     // Si le graphe est vide
     if (graph_ptr->head == NULL) {
