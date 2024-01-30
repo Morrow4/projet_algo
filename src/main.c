@@ -3,7 +3,7 @@
 #include "struct.h"
 #include "fonctions.h"
 
-int main{
+int main() {
     // Exemple d'utilisation
     graph* my_graph = create_graph(3);
 
