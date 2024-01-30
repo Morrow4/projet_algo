@@ -8,11 +8,11 @@
 #include "struct.h"
 
 // fonctions basiques
-node* create_node(int data, int ID);
-arc* create_arc(node* destination, int data);
-arc* add_arc(node* source, node* destination, int data);
-graph* add_node(int data, graph* graph, int iD);
-graph* create_graph(int nb_nodes);
+struct node* create_node(int data, int ID);
+struct arc* create_arc(node* destination, int data);
+struct arc* add_arc(node* source, node* destination, int data);
+struct graph* add_node(int data, graph* graph, int iD);
+struct graph* create_graph(int nb_nodes);
 void print_graph(graph* graph);
 void delete_graph(graph* graph);
 
@@ -26,11 +26,11 @@ int out_degree(graph* graph, int node_index);
 int total_degree(graph* graph, int node_index);
 
 //sousgraphe
-graph* sousgrapheInduit(graph* graph, int* tabIndice, int nb_nodes);
-graph* sousgraphePartiel(graph* graph, int* tabArcs, int nb_arcs);
+struct graph* sousgrapheInduit(graph* graph, int* tabIndice, int nb_nodes);
+struct graph* sousgraphePartiel(graph* graph, int* tabArcs, int nb_arcs);
 
 // import export
 char* export_graph(char* filename, graph* graph);
-graph* import_graph(char* filename);
+struct graph* import_graph(char* filename);
 
 #endif FONCTIONS_H
