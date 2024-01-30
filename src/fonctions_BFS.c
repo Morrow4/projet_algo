@@ -23,7 +23,7 @@ void breadth_first_search(graph* graph, int source) {
     }
 
     // Création de la file pour stocker les nœuds à visiter
-    queue* queue = (queue*)malloc(sizeof(queue));
+    struct queue* queue = (struct queue*)malloc(sizeof(struct queue));
     if (queue == NULL) {
         printf("Memory allocation failed!\n");
         free(visited);
