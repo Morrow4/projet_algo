@@ -5,7 +5,7 @@
 /* Fonctions basiques pour la structure de graphe */
 
 // fonction pour créer un nouveau noeud
-node* create_node(int data, int ID) {
+struct node* create_node(int data, int ID) {
     node* new_node = (node*)malloc(sizeof(node));
     if (new_node != NULL) {
         new_node -> data = data;
@@ -17,7 +17,7 @@ node* create_node(int data, int ID) {
 }
 
 // fonction pour créer un nouvel arc
-arc* create_arc(node* destination, int data) {
+struct arc* create_arc(struct node* destination, int data) {
     arc* new_arc = (arc*)malloc(sizeof(arc));
     if (new_arc != NULL) {
         new_arc -> data = data;
@@ -29,7 +29,7 @@ arc* create_arc(node* destination, int data) {
 }
 
 // fonction pour ajouter un arc à un noeud
-arc* add_arc(node* source, node* destination, int data) {
+struct arc* add_arc(struct node* source,struct node* destination, int data) {
     arc* new_arc = create_arc(destination, data);
     new_arc -> next = source -> arcs; // ajoute l'arc au début de la liste
     source -> arcs = new_arc;
@@ -37,8 +37,8 @@ arc* add_arc(node* source, node* destination, int data) {
 }
 
 // fonction pour ajouter un noeud à un graphique
-graph* add_node(int data, graph* graph, int ID) {
-    node* new_node = create_node(data, ID);
+struct graph* add_node(int data,struct graph* graph, int ID) {
+    struct node* new_node = create_node(data, ID);
     int i = 0;
     while(graph -> *nodes[i] != NULL) {
     i++;
@@ -50,8 +50,8 @@ graph* add_node(int data, graph* graph, int ID) {
 }
 
 // fonction pour créer un nouveau graphe
-graph* create_graph(int nb_nodes) {
-    graph* new_graph = (graph*)malloc(sizeof(graph));
+struct graph* create_graph(int nb_nodes) {
+    struct graph* new_graph = (graph*)malloc(sizeof(graph));
     if (new_graph != NULL) {
         new_graph -> nb_nodes = nb_nodes;
         new_graph -> nodes = (node*)malloc(nb_nodes*sizeof(node));
@@ -65,7 +65,7 @@ graph* create_graph(int nb_nodes) {
 }
 
 // fonction pour afficher un graphe 
-void print_graph(graph* graph) {
+void print_graph(struct graph* graph) {
     printf("Graph with %d nodes:\n", graph -> nb_nodes);
     for (int i = 0; i < graph -> nb_nodes; i++) {
         printf("Node %d [data: %d] -> ", i, graph -> nodes[i].data);
