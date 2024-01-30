@@ -6,7 +6,7 @@
 
 // fonction pour créer un nouveau noeud
 struct node* create_node(int data, int ID) {
-    struct node* new_node = (struct node*)malloc(sizeof(node));
+    struct node* new_node = (struct node*)malloc(sizeof(struct node));
     if (new_node != NULL) {
         new_node -> data = data;
         new_node -> arcs = NULL; // initialise la liste
@@ -18,7 +18,7 @@ struct node* create_node(int data, int ID) {
 
 // fonction pour créer un nouvel arc
 struct arc* create_arc(struct node* destination, int data) {
-    struct arc* new_arc = (struct arc*)malloc(sizeof(arc));
+    struct arc* new_arc = (struct arc*)malloc(sizeof(struct arc));
     if (new_arc != NULL) {
         new_arc -> data = data;
         new_arc -> next = NULL; // initialise le pointeur vers le prochaine arc
