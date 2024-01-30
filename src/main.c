@@ -9,8 +9,8 @@ int main() {
 
     print_graph(my_graph);
     
-    //bfs(my_graph, 0); // A finir
-    //depth_first_search(my-graph, 0);$
+    bfs(my_graph, 0);
+    //depth_first_search(my-graph, 0);
     
     //sousgraphe1(my_graph, tabIndice, nb_nodes); // A finir
     //sousgraphe2(my_graph, tabArcs, nb_arcs); // A finir
