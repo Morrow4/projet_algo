@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
-#include "fonctions.h"
+#include "fonctions_basiques.h"
 
 int main{
     // Exemple d'utilisation
@@ -13,11 +13,11 @@ int main{
 
     print_graph(my_graph);
     
-    bfs(my_graph, 0);
-    dfs_init(my_graph, 0);    
+    bfs(my_graph, 0); // A finir
+    dfs_init(my_graph, 0);  // A finir
     
-    sousgraphe1(my_graph, int* tabIndice, int nb_nodes);//a modifier
-    sousgraphe2(my_graph, int* tabArcs, int nb_arcs);//a modifier
-    delete_graph(my_graph);
+    sousgraphe1(my_graph, int* tabIndice, int nb_nodes); // A finir
+    sousgraphe2(my_graph, int* tabArcs, int nb_arcs); // A finir
+    delete_graph(my_graph); // A finir
     return 0;
 }
