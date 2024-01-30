@@ -17,7 +17,7 @@ void print_graph(struct graph* graph);
 void delete_graph(struct graph* graph);
 
 // parcours
-void depth_first_search(struct graph* graph, int source)
+void depth_first_search(struct graph* graph, int source);
 void bfs(struct graph* graph, int start_node_index);
 
 // degrée
