@@ -11,7 +11,7 @@ struct node;
 // Structure de graphe
 typedef struct graph {
     int nb_nodes; // nombre total de noeuds
-    node *nodes; // liste qui pointe vers les noeuds du graphe
+    struct node *nodes; // liste qui pointe vers les noeuds du graphe
 };
 
 // Structure d'arrête de graphe
@@ -25,7 +25,7 @@ typedef struct arc {
 typedef struct node {
     int ID; // node ID
     int data; // valeur du noeud
-    arc *arc; // liste des arêtes connectés à ce noeud
+    struct arc *arc; // liste des arêtes connectés à ce noeud
 };
 
 // Structure de file
@@ -33,17 +33,17 @@ typedef struct queue_element
 {
     struct queue_element *p;
     struct queue_element *n;
-    node* node;
+    struct node* node;
 };
 
 typedef struct queue 
 {
-    queue_element* head;
+    struct queue_element* head;
 };
 
 // Structure de pile pour stocker les nœuds à visiter
 typedef struct stack {
-    node* data;
+    struct node* data;
     struct stack* n;
 };
 
