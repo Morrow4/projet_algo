@@ -28,6 +28,13 @@ int main() {
     print_graph(my_graph);
     breadth_first_search(my_graph, 5);
     depth_first_search(my_graph, 2);
+    // Vérification si le graphe est connexe
+
+    if (is_strongly_connected(my_graph)) {
+        printf("Le graphe est fortement connexe.\n");
+    } else {
+        printf("Le graphe n'est pas fortement connexe.\n");
+    }
 
     // Vérification si le graphe est complet
     if (is_complete_graph(my_graph)) {
