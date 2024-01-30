@@ -7,7 +7,7 @@ int main() {
 
     // Création d'un graphe
     struct graph* my_graph = create_graph(6);
-
+    /*
     // Ajout des nœuds au graphe
     for (int i = 0; i < 6; i++) {
         add_node(0, my_graph, i);
@@ -48,16 +48,16 @@ int main() {
     printf("L'ordre du graphe est : %d\n", order);
     
     // Affichage du graphe induit et partiel
-    /*struct graph* my_graph_2 = sousgrapheInduit(my_graph, tabIndice, nb_nodes);
-    struct graph* my_graph_3 = sousgraphePartiel(my_graph, tabArcs, nb_arcs);
-    print_graph(my_graph_2);
-    print_graph(my_graph_3);*/
-
+    //struct graph* my_graph_2 = sousgrapheInduit(my_graph, tabIndice, nb_nodes);
+    //struct graph* my_graph_3 = sousgraphePartiel(my_graph, tabArcs, nb_arcs);
+    //print_graph(my_graph_2);
+    //print_graph(my_graph_3);
+    */
     // Recherche du plus court chemin entre deux sommets
     int source = 0;
     int destination = 5;
     shortest_path(my_graph, source, destination);
-
+    
     // Libération de la mémoire allouée pour le graphe
     delete_graph(my_graph);
     return 0;
