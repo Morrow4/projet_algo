@@ -1,7 +1,7 @@
 /* Déclarations des structures */
 
-#IFNDEF STRUCT_H
-#DEFINE STRUCT_H
+#ifndef STRUCT_H
+#define STRUCT_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ typedef struct graph {
 
 // Structure d'arrête de graphe
 typedef struct arc {
-    node* destination; // pointeur vers le noeud de destination
+    struct node* destination; // pointeur vers le noeud de destination
     int data; // valeur de l'arrête
     struct arc *next; // pointeur vers la prochaine arête dans la liste
 };
@@ -23,7 +23,7 @@ typedef struct arc {
 typedef struct node {
     int ID; // node ID
     int data; // valeur du noeud
-    struct arcs *arc; // liste des arêtes connectés à ce noeud
+    arc *arc; // liste des arêtes connectés à ce noeud
 };
 
 // Structure de file
@@ -31,12 +31,12 @@ typedef struct queue_element
 {
     struct queue_element *p;
     struct queue_element *n;
-    struct node* node;
+    node* node;
 };
 
 typedef struct queue 
 {
-    struct queue_element* tete;
+    queue_element* head;
 };
 
-#ENDIF STRUCT_H
+#endif STRUCT_H
