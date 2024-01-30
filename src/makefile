@@ -4,7 +4,7 @@
 CC = gcc
 
 # Source files
-SRC =  fonctions_basiques.c  main.c fonctions_DFS.c
+SRC =  fonctions_basiques.c main.c fonctions_DFS.c
 # fonctions_BFS.c  degre.c fonctions_sousgraphe.c export_import.c
 
 # Object files
