@@ -70,13 +70,14 @@ struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes
         struct arc* current_arc = original_node->arc;
         while (current_arc != NULL) {
             int dest_node_index = current_arc->destination->ID;
+
             for (int j = 0; j < nb_nodes; j++) {
                 if (tabIndice[j] == dest_node_index) {
                     // Trouver le nœud correspondant dans le sous-graphe induit
                     struct node* dest_node = get_node_by_index(sousgrapheInduit, dest_node_index);
 
                     // Ajouter l'arc dans le sous-graphe induit
-                    add_arc(sousgrapheInduit, dest_node, current_arc->data);
+                    add_arc(sousgrapheInduit, original_node->ID, dest_node->ID, current_arc->data);
                     break;
                 }
             }
@@ -116,7 +117,7 @@ struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs) 
 
             if (!exclude_arc) {
                 // Ajouter l'arc dans le sous-graphe partiel
-                add_arc(&(sousgraphePartiel->head[i]), current_arc->destination, current_arc_data);
+                add_arc(sousgraphePartiel, i, current_arc->destination->ID, current_arc_data);
             }
             current_arc = current_arc->next;
         }
