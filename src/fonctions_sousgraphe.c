@@ -68,7 +68,6 @@ graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs) {
                 // Ajouter l'arc dans le sous-graphe partiel
                 add_arc(&(sousgraphe2->nodes[i]), current_arc->destination, current_arc_data);
             }
-
             current_arc = current_arc->next;
         }
     }

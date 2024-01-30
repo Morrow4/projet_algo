@@ -9,8 +9,8 @@ node* create_node(int data, int ID) {
     node* new_node = (node*)malloc(sizeof(node));
     if (new_node != NULL) {
         new_node -> data = data;
-        new_node -> arcs = NULL; // initialise la liste des arcs à NULL
-        new_node -> ID = ID; // initialise l'ID du noeud à NULL
+        new_node -> arcs = NULL; // initialise la liste
+        new_node -> ID = ID; // initialise l'ID du noeud
         return new_node ;
     }
     return NULL;
@@ -21,7 +21,7 @@ arc* create_arc(node* destination, int data) {
     arc* new_arc = (arc*)malloc(sizeof(arc));
     if (new_arc != NULL) {
         new_arc -> data = data;
-        new_arc -> next = NULL; // initialise le pointeur vers le prochaine arc à NULL
+        new_arc -> next = NULL; // initialise le pointeur vers le prochaine arc
         new_arc -> destination = destination;
         return new_arc;
     }
