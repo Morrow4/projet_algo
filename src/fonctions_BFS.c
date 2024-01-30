@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
-#include "fonctions_basiques.h"
+#include "fonctions.h"
 
 // Fonction de parcours en largeur (BFS)
 void bfs(graph* graph, int start_node_index) {

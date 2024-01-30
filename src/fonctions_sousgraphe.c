@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
-#include "fonctions_basiques.h"
+#include "fonctions.h"
 
 // fonction sous-graphe induit à partir d'un sous-ensemble de sommets
 graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes) {
