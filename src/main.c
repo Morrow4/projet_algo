@@ -48,10 +48,10 @@ int main() {
     printf("L'ordre du graphe est : %d\n", order);
     
     // Affichage du graphe induit et partiel
-    struct graph* my_graph_2 = sousgrapheInduit(my_graph, tabIndice, nb_nodes);
+    /*struct graph* my_graph_2 = sousgrapheInduit(my_graph, tabIndice, nb_nodes);
     struct graph* my_graph_3 = sousgraphePartiel(my_graph, tabArcs, nb_arcs);
     print_graph(my_graph_2);
-    print_graph(my_graph_3);
+    print_graph(my_graph_3);*/
 
     // Recherche du plus court chemin entre deux sommets
     int source = 0;
