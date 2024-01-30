@@ -4,8 +4,8 @@
 CC = gcc
 
 # Source files
-SRC =  struct.c main.c dfs.o bfs.c degre.c export_import.c circuit.c connexe.c
-# sous_graphe.c complet.c shortest_path.c
+SRC =  struct.c main.c dfs.o bfs.c degre.c export_import.c circuit.c connexe.c complet.c
+# sous_graphe.c shortest_path.c
 
 # Target name
 TARGET = projet_algo.exe
