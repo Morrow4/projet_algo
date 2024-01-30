@@ -97,7 +97,7 @@ struct graph* add_node(int data, struct graph* graph_ptr, int ID) {
 // Fonction pour créer un nouveau graphe avec un nombre spécifié de nœuds
 struct graph* create_graph(int nb_nodes) {
     // Allouer de la mémoire pour la structure de graphe
-    struct graph* new_graph = (struct graph*)malloc(sizeof(struct graph));
+    struct graph* new_graph = (struct graph*)malloc(nb_nodes * (struct graph));
     if (new_graph == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
