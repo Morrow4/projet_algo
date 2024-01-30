@@ -55,4 +55,14 @@ void dfs_visit(struct graph* graph, int node_id, int* visited);
 void dfs_visit_with_finish_order(struct graph* graph, int node_id, int* visited, struct stack** finish_order);
 void dfs_print_connected_component(struct graph* graph, int node_id, int* visited);
 
+// complet
+int is_complete_graph(struct graph* graph);
+int complete_graph_order(struct graph* graph);
+
+// chemin le plus court
+void initialize_single_source(struct graph* graph, int source, int* distance, int* predecessor);
+int min_distance_vertex(int* distance, int* visited, int nb_nodes);
+void print_shortest_path(int source, int destination, int* predecessor);
+void shortest_path(struct graph* graph, int source, int destination);
+
 #endif
