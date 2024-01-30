@@ -3,10 +3,10 @@
 #include "struct.h"
 #include "fonctions.h"
 
-//------------CIRCUIT
+/*------------CIRCUIT------------*/
 
-//fonction detecter si chemin est un circuit
-//Si un chemin (s_0-s_k) contient au moins un arc
+// fonction detecter si chemin est un circuit
+// Si un chemin (s_0-s_k) contient au moins un arc
 // Fonction pour vérifier s'il y a au moins un arc dans le graphe
 int detect_arc(graph* graph) {
     if (graph == NULL) {
@@ -32,7 +32,7 @@ int detect_circuit(graph* graph){
     }
     return 0;
 }
-//Fonction qui retourne le circuit
+// Fonction qui retourne le circuit
 int retour_circuit(graph* graph){
     for (int i = 0; i < graph->nb_nodes; i++) {
         if (graph->nodes[i].arcs != NULL) {
