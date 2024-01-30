@@ -57,7 +57,7 @@ struct graph* create_graph(int nb_nodes) {
         new_graph -> nodes = (struct node*)malloc(nb_nodes*sizeof(node));
         // initialisation des noeuds du graphe
         for (int i = 0; i < nb_nodes; i++) {
-            new_graph -> nodes[i] = create_node(i);
+            new_graph -> nodes[i] = create_node(i);t
         }
         return new_graph;
     }
