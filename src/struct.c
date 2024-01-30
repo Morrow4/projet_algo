@@ -28,13 +28,42 @@ struct arc* create_arc(struct node* destination, int data) {
     return NULL;
 }
 
-// fonction pour ajouter un arc à un noeud
-struct arc* add_arc(struct node* source,struct node* destination, int data) {
-    struct arc* new_arc = create_arc(destination, data);
-    new_arc -> next = source -> arc; // ajoute l'arc au début de la liste
-    source -> arc = new_arc;
-    return new_arc;
+// Fonction pour ajouter un arc à un graphe dirigé
+void add_arc(struct graph* graph, int source_id, int destination_id, int data) {
+    // Vérification des arguments
+    if (graph == NULL || graph->head == NULL || source_id < 0 || source_id >= graph->nb_nodes ||
+        destination_id < 0 || destination_id >= graph->nb_nodes) {
+        printf("Invalid arguments!\n");
+        return;
+    }
+
+    // Création d'une nouvelle arête
+    struct arc* new_arc = (struct arc*)malloc(sizeof(struct arc));
+    if (new_arc == NULL) {
+        printf("Memory allocation failed!\n");
+        return;
+    }
+    new_arc->data = data;
+    new_arc->next = NULL;
+
+    // Accéder au nœud source dans le graphe
+    struct node* source_node = &(graph->head[source_id]);
+
+    // Si le nœud source n'a pas encore d'arc, créer le 1er arc
+    if (source_node->arc == NULL) {
+        source_node->arc = new_arc;
+        source_node->arc->destination = &(graph->head[destination_id]);
+    } else {
+        // Sinon, parcourir jusqu'aux dernier arc et l'ajouter
+        struct arc* current_arc = source_node->arc;
+        while (current_arc->next != NULL) {
+            current_arc = current_arc->next;
+        }
+        current_arc->next = new_arc;
+        current_arc->next->destination = &(graph->head[destination_id]);
+    }
 }
+
 
 // Fonction pour ajouter un noeud à un graphe
 struct graph* add_node(int data, struct graph* graph_ptr, int ID) {

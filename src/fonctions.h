@@ -10,7 +10,7 @@
 // fonctions basiques
 struct node* create_node(int data, int ID);
 struct arc* create_arc(struct node* destination, int data);
-struct arc* add_arc(struct node* source,struct node* destination, int data);
+void add_arc(struct graph* graph, int source_id, int destination_id, int data);
 struct graph* add_node(int data, struct graph* graph, int ID);
 struct graph* create_graph(int nb_nodes);
 void print_graph(struct graph* graph);
@@ -51,5 +51,8 @@ int dfs_find_circuit(struct graph* graph, int node_id, int* visited, int parent,
 struct graph* reverse_graph(struct graph* graph);
 int is_strongly_connected(struct graph* graph);
 void get_strongly_connected_components(struct graph* graph);
+void dfs_visit(struct graph* graph, int node_id, int* visited);
+void dfs_visit_with_finish_order(struct graph* graph, int node_id, int* visited, struct stack** finish_order);
+void dfs_print_connected_component(struct graph* graph, int node_id, int* visited);
 
 #endif
