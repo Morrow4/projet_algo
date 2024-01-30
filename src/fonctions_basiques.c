@@ -154,3 +154,49 @@ struct node* pop(struct stack** top) {
     free(temp);
     return node;
 }
+
+// Fonction pour enfiler un nœud dans la file
+void queue_push(struct queue* q, struct node* node) {
+    // Création d'un nouvel élément de file
+    struct queue_element* new_element = (struct queue_element*)malloc(sizeof(struct queue_element));
+    if (new_element == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+    new_element->node = node;
+    new_element->n = NULL;
+
+    // Si la file est vide, le nouvel élément sera à la fois la tête et la queue de la file
+    if (q->head == NULL) {
+        q->head = new_element;
+        return;
+    }
+
+    // Sinon, ajouter le nouvel élément à la fin de la file
+    struct queue_element* current = q->head;
+    while (current->n != NULL) {
+        current = current->n;
+    }
+    current->n = new_element;
+}
+
+// Fonction pour défiler un nœud de la file
+struct node* queue_pop(struct queue* q) {
+    // Vérifier si la file est vide
+    if (q->head == NULL) {
+        printf("Queue underflow!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Récupérer le nœud à la tête de la file
+    struct node* node = q->head->node;
+
+    // Mettre à jour la tête de la file
+    struct queue_element* temp = q->head;
+    q->head = q->head->n;
+
+    // Libérer la mémoire de l'élément retiré de la file
+    free(temp);
+
+    return node;
+}
