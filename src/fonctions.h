@@ -15,6 +15,8 @@ struct graph* add_node(int data, struct graph* graph, int ID);
 struct graph* create_graph(int nb_nodes);
 void print_graph(struct graph* graph);
 void delete_graph(struct graph* graph);
+void push(struct stack** top,struct node* node);
+struct node* pop(struct stack** top);
 
 // parcours
 void depth_first_search(struct graph* graph, int source);

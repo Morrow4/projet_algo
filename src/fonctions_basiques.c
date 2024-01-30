@@ -37,21 +37,23 @@ struct arc* add_arc(struct node* source,struct node* destination, int data) {
 }
 
 // Fonction pour ajouter un noeud à un graphe
-struct graph* add_node(int data, struct graph* graph, int ID) {
+struct graph* add_node(int data, struct graph* graph_ptr, int ID) {
     // Créer un nouveau nœud
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
     if (new_node == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
     }
-    new_node = create_node(data, ID);
+    new_node->data = data;
+    new_node->ID = ID;
+    new_node->arc = NULL;
 
     // Si le graphe est vide
-    if (graph->head == NULL) {
-        graph->head = new_node;
+    if (graph_ptr->head == NULL) {
+        graph_ptr->head = new_node;
     } else {
         // Parcourir jusqu'à la fin pour ajouter le nouveau nœud
-        struct node* current = graph->head;
+        struct node* current = graph_ptr->head;
         while (current->arc != NULL) {
             current = current->arc->destination;
         }
@@ -64,52 +66,68 @@ struct graph* add_node(int data, struct graph* graph, int ID) {
         current->arc->data = 0; // Valeur d'arête par défaut
         current->arc->next = NULL;
     }
-    graph->nb_nodes++;
-    return graph;
+    graph_ptr->nb_nodes++;
+    return graph_ptr;
 }
 
 
-// fonction pour créer un nouveau graphe
+
+// Fonction pour créer un nouveau graphe avec un nombre spécifié de nœuds
 struct graph* create_graph(int nb_nodes) {
-    struct graph* new_graph = (struct graph*)malloc(sizeof(graph));
-    if (new_graph != NULL) {
-        new_graph -> nb_nodes = nb_nodes;
-        new_graph -> nodes = (struct node*)malloc(nb_nodes*sizeof(node));
-        // initialisation des noeuds du graphe
-        for (int i = 0; i < nb_nodes; i++) {
-            new_graph -> nodes[i] = *(create_node(0, i));
-        }
-        return new_graph;
+    // Allouer de la mémoire pour la structure de graphe
+    struct graph* new_graph = (struct graph*)malloc(sizeof(struct graph));
+    if (new_graph == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
     }
-    return NULL;
+
+    // Initialiser le nombre de nœuds
+    new_graph->nb_nodes = nb_nodes;
+    new_graph->head = NULL; // Initialiser la tête du graphe à NULL
+
+    return new_graph;
 }
 
-// fonction pour afficher un graphe 
+// Fonction pour afficher un graphe
 void print_graph(struct graph* graph) {
-    printf("Graph with %d nodes:\n", graph -> nb_nodes);
-    for (int i = 0; i < graph -> nb_nodes; i++) {
-        printf("Node %d [data: %d] -> ", i, graph -> nodes[i].data);
-        arc* current_arc = graph -> nodes[i].arc;
+    printf("Graph with %d nodes:\n", graph->nb_nodes);
+    struct node* current_node = graph->head;
+    while (current_node != NULL) {
+        printf("Node %d [data: %d] -> ", current_node->ID, current_node->data);
+        struct arc* current_arc = current_node->arc;
         while (current_arc != NULL) {
-            printf("[Arc: Node %d | data=%d] ", current_arc -> destination -> data, current_arc -> data);
-            current_arc = current_arc -> next;
+            printf("[Arc: Node %d | data=%d] ", current_arc->destination->data, current_arc->data);
+            current_arc = current_arc->next;
         }
         printf("\n");
+        current_node = current_node->arc ? current_node->arc->destination : NULL;
     }
 }
 
-// fonction pour supprimmer le graphe
+// Fonction pour supprimer un graphe et libérer la mémoire associée
 void delete_graph(struct graph* graph) {
-    for (int i = 0 ; i < graph -> nb_nodes; i++) {
-        struct arc* current_arc = graph -> nodes[i].arc; // libérer la mémoire de chaque arc connecté à un noeud
-        while (current_arc != NULL) {
-            arc* next_arc = current_arc -> next;
-            free(current_arc);
-            current_arc = next_arc;
-        }
+    // Vérifier si le graphe existe
+    if (graph == NULL) {
+        printf("Invalid graph!\n");
+        return;
     }
-    free(graph -> nodes); // libérer la mémoire des noeuds du graphe
-    free(graph); // libérer la mémoire du graphe
+
+    // Libérer la mémoire des arcs et des nœuds du graphe
+    struct node* current_node = graph->head;
+    while (current_node != NULL) {
+        struct arc* current_arc = current_node->arc;
+        while (current_arc != NULL) {
+            struct arc* temp_arc = current_arc;
+            current_arc = current_arc->next;
+            free(temp_arc);
+        }
+        struct node* temp_node = current_node;
+        current_node = current_node->arc ? current_node->arc->destination : NULL;
+        free(temp_node);
+    }
+
+    // Libérer la mémoire du graphe lui-même
+    free(graph);
 }
 
 // fonction pour empiler un noeud
