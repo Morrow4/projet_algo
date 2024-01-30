@@ -24,14 +24,14 @@ void depth_first_search(graph* graph, int source) {
     }
 
     // Création de la pile pour stocker les nœuds à visiter
-    Stack* stack = NULL;
+    stack* stack = NULL;
 
     // Empiler le nœud source
     push(&stack, &(graph->nodes[source]));
 
     // Parcours en profondeur
     while (stack != NULL) {
-        Node* current = pop(&stack);
+        node* current = pop(&stack);
 
         // Si le nœud n'a pas été visité
         if (!visited[current->ID]) {
@@ -39,7 +39,7 @@ void depth_first_search(graph* graph, int source) {
             visited[current->ID] = 1; // Marquer le nœud comme visité
 
             // Empiler tous les nœuds adjacents non visités
-            Arc* arc = current->arc;
+            arc* arc = current->arc;
             while (arc != NULL) {
                 if (!visited[arc->destination->ID]) {
                     push(&stack, arc->destination);

@@ -1,7 +1,7 @@
 /* Déclarations des fonctions */
 
-#IFNDEF FONCTIONS_BASIQUES_H
-#DEFINE FONCTIONS_BASIQUES_H
+#ifndef FONCTIONS_H
+#define FONCTIONS_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,8 +17,7 @@ void print_graph(graph* graph);
 void delete_graph(graph* graph);
 
 // parcours
-void dfs_parcours(graph* graph, int start_node_index, int* visited);
-void dfs(graph* graph, int start_node_index);
+void depth_first_search(graph* graph, int source)
 void bfs(graph* graph, int start_node_index);
 
 // degrée
@@ -34,4 +33,4 @@ graph* sousgraphe2(graph* graph, int* tabArcs, int nb_arcs);
 char* export_graph(char* filename, graph* graph);
 graph* import_graph(char* filename);
 
-#ENDIF FONCTIONS_BASIQUES_H
+#endif FONCTIONS_H
