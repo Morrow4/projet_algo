@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
+#include "fonctions.h"
 
 // Fonction auxiliaire pour vérifier la connectivité forte en utilisant DFS
 int dfs_strongly_connected(struct graph* graph, int node_id) {

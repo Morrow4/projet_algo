@@ -2,5 +2,8 @@
     "makefile.makefilePath": "src\\makefile",
     "makefile.buildLog": "",
     "makefile.makePath": "make",
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "struct.h": "c"
+    }
 }
