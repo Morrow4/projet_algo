@@ -9,28 +9,28 @@
 
 // fonctions basiques
 struct node* create_node(int data, int ID);
-struct arc* create_arc(node* destination, int data);
-struct arc* add_arc(node* source, node* destination, int data);
-struct graph* add_node(int data, graph* graph, int iD);
+struct arc* create_arc(struct node* destination, int data);
+struct arc* add_arc(struct node* source,struct node* destination, int data);
+struct graph* add_node(int data,struct graph* graph, int iD);
 struct graph* create_graph(int nb_nodes);
-void print_graph(graph* graph);
-void delete_graph(graph* graph);
+void print_graph(struct graph* graph);
+void delete_graph(struct graph* graph);
 
 // parcours
-void depth_first_search(graph* graph, int source)
-void bfs(graph* graph, int start_node_index);
+void depth_first_search(struct graph* graph, int source)
+void bfs(struct graph* graph, int start_node_index);
 
 // degrée
-int in_degree(graph* graph, int node_index);
-int out_degree(graph* graph, int node_index);
-int total_degree(graph* graph, int node_index);
+int in_degree(struct graph* graph, int node_index);
+int out_degree(struct graph* graph, int node_index);
+int total_degree(struct graph* graph, int node_index);
 
 //sousgraphe
-struct graph* sousgrapheInduit(graph* graph, int* tabIndice, int nb_nodes);
-struct graph* sousgraphePartiel(graph* graph, int* tabArcs, int nb_arcs);
+struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes);
+struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs);
 
 // import export
-char* export_graph(char* filename, graph* graph);
+char* export_graph(char* filename,struct graph* graph);
 struct graph* import_graph(char* filename);
 
 #endif FONCTIONS_H
