@@ -32,6 +32,9 @@ int total_degree(struct graph* graph, int node_index);
 //sousgraphe
 struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes);
 struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs);
+//pour sousgraphe
+struct node* get_node_by_index(struct graph* graph, int index);
+void add_node_to_graph(struct graph* graph, struct node* new_node);
 
 // import export
 char* export_graph(char* filename,struct graph* graph);
