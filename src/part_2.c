@@ -52,6 +52,27 @@ int contains_circuit(struct graph* graph) {
     return 0;
 }
 
+// Fonction auxiliaire pour détecter un circuit en utilisant DFS
+int dfs_contains_circuit(struct graph* graph, int node_id, int* visited, int parent) {
+    visited[node_id] = 1; // Marquer le nœud actuel comme visité
+
+    // Parcourir toutes les arêtes du nœud actuel
+    struct arc* current_arc = graph->head[node_id].arc;
+    while (current_arc != NULL) {
+        int dest_id = current_arc->destination->ID;
+        if (!visited[dest_id]) {
+            // Si le nœud destination n'a pas été visité, récursion DFS
+            if (dfs_contains_circuit(graph, dest_id, visited, node_id)) {
+                return 1; // True, un circuit a été trouvé
+            }
+        } else if (dest_id != parent) {
+            return 1; // True, un circuit a été trouvé car un nœud visité est découvert
+        }
+        current_arc = current_arc->next;
+    }
+    return 0; // False, pas de circuit trouvé dans cette branche
+}
+
 // Fonction pour trouver un circuit dans un graphe en utilisant DFS
 int* find_circuit(struct graph* graph) {
     // Vérification des arguments
@@ -81,4 +102,54 @@ int* find_circuit(struct graph* graph) {
     // Libération de la mémoire et retourner NULL, car aucun circuit n'a été trouvé
     free(visited);
     return NULL;
+}
+
+// Fonction auxiliaire pour trouver un circuit en utilisant DFS
+int dfs_find_circuit(struct graph* graph, int node_id, int* visited, int parent, int** circuit) {
+    visited[node_id] = 1; // Marquer le nœud actuel comme visité
+
+    // Parcourir toutes les arêtes du nœud actuel
+    struct arc* current_arc = graph->head[node_id].arc;
+    while (current_arc != NULL) {
+        int dest_id = current_arc->destination->ID;
+        if (!visited[dest_id]) {
+            // Si le nœud destination n'a pas été visité, récursion DFS
+            if (dfs_find_circuit(graph, dest_id, visited, node_id, circuit)) {
+                if (*circuit == NULL) {
+                    *circuit = (int*)malloc(sizeof(int) * (graph->nb_nodes + 1));
+                    if (*circuit == NULL) {
+                        printf("Memory allocation failed!\n");
+                        return 0; // Échec d'allocation de mémoire
+                    }
+                    (*circuit)[0] = dest_id;
+                } else if ((*circuit)[0] == dest_id) {
+                    (*circuit)[++(*circuit)[0]] = node_id; // Ajouter le nœud au circuit
+                    return 1; // True, le circuit est complet
+                }
+                if (*circuit != NULL) {
+                    (*circuit)[++(*circuit)[0]] = node_id; // Ajouter le nœud au circuit
+                }
+                return 1; // True, un circuit a été trouvé
+            }
+        } else if (dest_id != parent) {
+            // Si un nœud visité est découvert et n'est pas le parent, nous avons trouvé un cycle
+            if (*circuit == NULL) {
+                *circuit = (int*)malloc(sizeof(int) * (graph->nb_nodes + 1));
+                if (*circuit == NULL) {
+                    printf("Memory allocation failed!\n");
+                    return 0; // Échec d'allocation de mémoire
+                }
+                (*circuit)[0] = dest_id;
+            } else if ((*circuit)[0] == dest_id) {
+                (*circuit)[++(*circuit)[0]] = node_id; // Ajouter le nœud au circuit
+                return 1; // True, le circuit est complet
+            }
+            if (*circuit != NULL) {
+                (*circuit)[++(*circuit)[0]] = node_id; // Ajouter le nœud au circuit
+            }
+            return 1; // True, un circuit a été trouvé
+        }
+        current_arc = current_arc->next;
+    }
+    return 0; // False, pas de circuit trouvé dans cette branche
 }

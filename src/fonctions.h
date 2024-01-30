@@ -40,6 +40,8 @@ struct graph* import_graph(const char* filename);
 // circuit
 int is_circuit_in_path(struct graph* graph, int* path, int path_length);
 int contains_circuit(struct graph* graph);
+int dfs_contains_circuit(struct graph* graph, int node_id, int* visited, int parent)
 int* find_circuit(struct graph* graph);
+int dfs_find_circuit(struct graph* graph, int node_id, int* visited, int parent, int** circuit);
 
 #endif
