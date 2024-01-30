@@ -4,10 +4,10 @@
 CC = gcc
 
 # Source files
-SRC = degre.c export_import.c fonctions_basiques.c fonctions_BFS.c fonctions_DFS.c fonctions_sousgraphe.c main.c fonctions_partie2.c
+SRC = degre.c export_import.c fonctions_basiques.c fonctions_BFS.c fonctions_DFS.c fonctions_sousgraphe.c main.c
 
 # Object files
-OBJECTS = degre.o export_import.o fonctions_basiques.o fonctions_BFS.o fonctions_DFS.o fonctions_sousgraphe.o main.o fonctions_partie2.c
+OBJECTS = degre.o export_import.o fonctions_basiques.o fonctions_BFS.o fonctions_DFS.o fonctions_sousgraphe.o main.o
 
 # Target name
 TARGET = projet_algo.exe
