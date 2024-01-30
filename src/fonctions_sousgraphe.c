@@ -1,23 +1,22 @@
 //Fonction sous-graphe G' induit par un sous-ensemble de sommet
-// Ajoutez ceci en haut de votre fonction_BFS.c
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
 #include "fonctions.h"
 
 // fonction sous-graphe induit à partir d'un sous-ensemble de sommets
-graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes) {
+graph* sousgrapheInduit(graph* graph, int* tabIndice, int nb_nodes) {
     if (graph == NULL || tabIndice == NULL || nb_nodes <= 0) {
         return NULL;
     }
 
     // Créer un nouveau graphe pour le sous-graphe induit
-    graph* sousgraphe1 = create_graph(nb_nodes);
+    graph* sousgrapheInduit = create_graph(nb_nodes);
 
     // Copier les nœuds du sous-ensemble dans le sous-graphe induit
     for (int i = 0; i < nb_nodes; i++) {
         int node_index = tabIndice[i];
-        sousgraphe1->nodes[i].data = graph->nodes[node_index].data;
+        sousgrapheInduit->nodes[i].data = graph->nodes[node_index].data;
 
         // Copier les arcs du nœud correspondant dans le graphe original
         arc* current_arc = graph->nodes[node_index].arcs;
@@ -26,7 +25,7 @@ graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes) {
             for (int j = 0; j < nb_nodes; j++) {
                 if (tabIndice[j] == dest_node_index) {
                     // Ajouter l'arc dans le sous-graphe induit
-                    add_arc(&(sousgraphe1->nodes[i]), &(sousgraphe1->nodes[j]), current_arc->data);
+                    add_arc(&(sousgrapheInduit->nodes[i]), &(sousgrapheInduit->nodes[j]), current_arc->data);
                     break;
                 }
             }
@@ -34,7 +33,7 @@ graph* sousgraphe1(graph* graph, int* tabIndice, int nb_nodes) {
         }
     }
 
-    return sousgraphe1;
+    return sousgrapheInduit;
 }
 
 // fonction pour créer un sous-graphe partiel défini par un sous-ensemble d'arcs à retirer
