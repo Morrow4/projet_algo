@@ -40,7 +40,7 @@ struct arc* add_arc(struct node* source,struct node* destination, int data) {
 struct graph* add_node(int data,struct graph* graph, int ID) {
     struct node* new_node = create_node(data, ID);
     int i = 0;
-    while(graph -> *nodes[i] != NULL) {
+    while(graph -> *(nodes[i]) != NULL) {
     i++;
     } 
     graph -> *nodes[i] = new_node;
@@ -57,7 +57,7 @@ struct graph* create_graph(int nb_nodes) {
         new_graph -> nodes = (struct node*)malloc(nb_nodes*sizeof(node));
         // initialisation des noeuds du graphe
         for (int i = 0; i < nb_nodes; i++) {
-            new_graph -> nodes[i] = *create_node(i);
+            new_graph -> nodes[i] = *(create_node(i));
         }
         return new_graph;
     }
@@ -80,7 +80,7 @@ void print_graph(struct graph* graph) {
 
 // fonction pour supprimmer le graphe
 void delete_graph(struct graph* graph) {
-    for (int i = 0 ; i graph -> nb_nodes; i++) {
+    for (int i = 0 ; i < graph -> nb_nodes; i++) {
         struct arc* current_arc = graph -> nodes[i].arc; // libérer la mémoire de chaque arc connecté à un noeud
         while (current_arc != NULL) {
             arc* next_arc = current_arc -> next;
