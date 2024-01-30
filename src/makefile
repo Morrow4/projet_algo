@@ -5,7 +5,7 @@ CC = gcc
 
 # Source files
 SRC =  struct.c main.c dfs.o bfs.c degre.c export_import.c circuit.c connexe.c
-# fonctions_sousgraphe.c 
+# sous_graphe.c 
 
 # Target name
 TARGET = projet_algo.exe
