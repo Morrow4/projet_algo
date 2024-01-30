@@ -1,5 +1,6 @@
 {
     "makefile.makefilePath": "src\\makefile",
     "makefile.buildLog": "",
-    "makefile.makePath": "make"
+    "makefile.makePath": "make",
+    "C_Cpp.errorSquiggles": "disabled"
 }
