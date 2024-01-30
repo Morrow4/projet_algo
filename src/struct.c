@@ -92,8 +92,6 @@ struct graph* add_node(int data, struct graph* graph_ptr, int ID) {
     return graph_ptr;
 }
 
-
-
 // Fonction pour créer un nouveau graphe avec un nombre spécifié de nœuds
 struct graph* create_graph(int nb_nodes) {
     // Allouer de la mémoire pour la structure de graphe
