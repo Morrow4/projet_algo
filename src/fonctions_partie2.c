@@ -37,7 +37,7 @@ int retour_circuit(graphe* graph){
     for (int i = 0; i < graph->nb_nodes; i++) {
         if (graph->nodes[i].arcs != NULL) {
 
-            return ;
+            return 1;
         }
     }
 }
@@ -46,6 +46,7 @@ int retour_circuit(graphe* graph){
 int parcours_graphe{
     //Penser à marquer le chemin parcouru
     //Penser à marquer le chemin renvoyant un circuit
+    return -1;
 }
 
 //retour du circuit
