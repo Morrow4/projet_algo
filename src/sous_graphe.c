@@ -3,9 +3,50 @@
 #include "struct.h"
 #include "fonctions.h"
 
-// Fonctions auxiliaires
-struct node* get_node_by_index(struct graph* graph, int index);
-void add_node_to_graph(struct graph* graph, struct node* new_node);
+// Fonction pour récupérer un nœud par son index dans le graphe
+struct node* get_node_by_index(struct graph* graph, int index) {
+    if (graph == NULL || index < 0 || index >= graph->nb_nodes) {
+        return NULL; // Index invalide
+    }
+
+    struct node* current_node = graph->head;
+    while (current_node != NULL) {
+        if (current_node->ID == index) {
+            return current_node; // Nœud trouvé
+        }
+        current_node = current_node->arc ? current_node->arc->destination : NULL;
+    }
+
+    return NULL; // Nœud non trouvé
+}
+
+// Fonction pour ajouter un nœud au graphe
+void add_node_to_graph(struct graph* graph, struct node* new_node) {
+    if (graph == NULL || new_node == NULL) {
+        return; // Graph ou nœud invalide
+    }
+
+    // Si le graphe est vide
+    if (graph->head == NULL) {
+        graph->head = new_node;
+    } else {
+        // Parcourir jusqu'à la fin pour ajouter le nouveau nœud
+        struct node* current = graph->head;
+        while (current->arc != NULL) {
+            current = current->arc->destination;
+        }
+        current->arc = (struct arc*)malloc(sizeof(struct arc));
+        if (current->arc == NULL) {
+            printf("Memory allocation failed!\n");
+            exit(EXIT_FAILURE);
+        }
+        current->arc->destination = new_node;
+        current->arc->data = 0; // Valeur d'arête par défaut
+        current->arc->next = NULL;
+    }
+
+    graph->nb_nodes++;
+}
 
 // Fonction sous-graphe induit à partir d'un sous-ensemble de sommets
 struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes) {
