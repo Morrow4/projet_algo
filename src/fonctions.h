@@ -20,7 +20,7 @@ struct node* pop(struct stack** top);
 
 // parcours
 void depth_first_search(struct graph* graph, int source);
-void bfs(struct graph* graph, int start_node_index);
+void breadth_first_search(graph* graph, int source);
 
 // degrée
 int in_degree(struct graph* graph, int node_index);
