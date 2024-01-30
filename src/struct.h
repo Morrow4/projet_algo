@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct node;
+
 // Structure de graphe
 typedef struct graph {
     int nb_nodes; // nombre total de noeuds
