@@ -34,6 +34,63 @@ struct graph* reverse_graph(struct graph* graph) {
     return reversed_graph;
 }
 
+// Fonction auxiliaire pour le parcours en profondeur (DFS)
+void dfs_visit(struct graph* graph, int node_id, int* visited) {
+    // Marquer le nœud actuel comme visité
+    visited[node_id] = 1;
+
+    // Afficher le nœud visité (ou effectuer toute autre opération nécessaire)
+    printf("Visited node: %d\n", node_id);
+
+    // Parcourir les nœuds adjacents non visités
+    struct arc* current_arc = graph->head[node_id].arc;
+    while (current_arc != NULL) {
+        int neighbor_id = current_arc->destination->ID;
+        if (!visited[neighbor_id]) {
+            dfs_visit(graph, neighbor_id, visited);
+        }
+        current_arc = current_arc->next;
+    }
+}
+
+// Fonction auxiliaire pour le parcours en profondeur (DFS) avec ordre de fin de visite
+void dfs_visit_with_finish_order(struct graph* graph, int node_id, int* visited, struct stack** finish_order) {
+    // Marquer le nœud actuel comme visité
+    visited[node_id] = 1;
+
+    // Parcourir les nœuds adjacents non visités
+    struct arc* current_arc = graph->head[node_id].arc;
+    while (current_arc != NULL) {
+        int neighbor_id = current_arc->destination->ID;
+        if (!visited[neighbor_id]) {
+            dfs_visit_with_finish_order(graph, neighbor_id, visited, finish_order);
+        }
+        current_arc = current_arc->next;
+    }
+
+    // Empiler le nœud actuel pour l'ordre de fin de visite
+    push(finish_order, &(graph->head[node_id]));
+}
+
+// Fonction pour afficher une composante connexe à partir d'un nœud donné (DFS)
+void dfs_print_connected_component(struct graph* graph, int node_id, int* visited) {
+    // Marquer le nœud actuel comme visité
+    visited[node_id] = 1;
+
+    // Afficher le nœud visité (ou effectuer toute autre opération nécessaire)
+    printf("%d ", node_id);
+
+    // Parcourir les nœuds adjacents non visités
+    struct arc* current_arc = graph->head[node_id].arc;
+    while (current_arc != NULL) {
+        int neighbor_id = current_arc->destination->ID;
+        if (!visited[neighbor_id]) {
+            dfs_print_connected_component(graph, neighbor_id, visited);
+        }
+        current_arc = current_arc->next;
+    }
+}
+
 // Fonction auxiliaire pour vérifier la connectivité forte en utilisant DFS
 int dfs_strongly_connected(struct graph* graph, int node_id) {
     // Initialisation des nœuds visités

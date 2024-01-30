@@ -48,5 +48,8 @@ int dfs_find_circuit(struct graph* graph, int node_id, int* visited, int parent,
 struct graph* reverse_graph(struct graph* graph);
 int is_strongly_connected(struct graph* graph);
 void get_strongly_connected_components(struct graph* graph);
+void dfs_visit(struct graph* graph, int node_id, int* visited);
+void dfs_visit_with_finish_order(struct graph* graph, int node_id, int* visited, struct stack** finish_order);
+void dfs_print_connected_component(struct graph* graph, int node_id, int* visited);
 
 #endif
