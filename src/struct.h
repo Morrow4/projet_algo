@@ -47,4 +47,4 @@ typedef struct stack {
     struct stack* n;
 } stack;
 
-#endif STRUCT_H
+#endif // STRUCT_H
