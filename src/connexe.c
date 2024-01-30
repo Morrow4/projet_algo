@@ -26,7 +26,7 @@ struct graph* reverse_graph(struct graph* graph) {
         struct arc* current_arc = current_node->arc;
         while (current_arc != NULL) {
             // Ajouter une arête inverse dans le graphe inversé
-            add_edge(reversed_graph, current_arc->destination->ID, current_node->ID, current_arc->data);
+            add_arc(reversed_graph, current_arc->destination->ID, current_node->ID, current_arc->data);
             current_arc = current_arc->next;
         }
     }
