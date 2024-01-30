@@ -12,7 +12,7 @@ int main() {
     for (int i = 0; i < 6; i++) {
         add_node(0, my_graph, i); // Vous devez spécifier la valeur correcte pour les données des nœuds
     }
-    
+
     // Ajout des arcs au graphe
     add_arc(my_graph, 0, 1, 4); // De A à B avec poids 4
     add_arc(my_graph, 0, 2, 3); // De A à C avec poids 3
@@ -26,8 +26,8 @@ int main() {
 
     // Affichage du graphe
     print_graph(my_graph);
-    breadth_first_search(my_graph, 0);
-    depth_first_search(my_graph, 0);
+    breadth_first_search(my_graph, 5);
+    depth_first_search(my_graph, 2);
 
     // Vérification si le graphe est complet
     if (is_complete_graph(my_graph)) {
