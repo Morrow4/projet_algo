@@ -25,9 +25,9 @@ void depth_first_search(struct graph* graph, int source);
 void breadth_first_search(graph* graph, int source);
 
 // degrée
-int in_degree(struct graph* graph, int node_index);
-int out_degree(struct graph* graph, int node_index);
-int total_degree(struct graph* graph, int node_index);
+int in_degree(struct graph* graph, int node_id);
+int out_degree(struct graph* graph, int node_id);
+int total_degree(struct graph* graph, int node_id);
 
 //sousgraphe
 struct graph* sousgrapheInduit(struct graph* graph, int* tabIndice, int nb_nodes);
