@@ -43,7 +43,7 @@ int retour_circuit(graphe* graph){
 }
 
 //Parcours du graphe
-int parcours_graphe{
+int parcours_graphe(){
     //Penser à marquer le chemin parcouru
     //Penser à marquer le chemin renvoyant un circuit
     return -1;
