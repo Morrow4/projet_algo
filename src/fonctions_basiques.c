@@ -81,7 +81,7 @@ void print_graph(struct graph* graph) {
 // fonction pour supprimmer le graphe
 void delete_graph(struct graph* graph) {
     for (int i = 0 ; i graph -> nb_nodes; i++) {
-        arc* current_arc = graph -> nodes[i].arcs; // libérer la mémoire de chaque arc connecté à un noeud
+        struct arc* current_arc = graph -> nodes[i].arcs; // libérer la mémoire de chaque arc connecté à un noeud
         while (current_arc != NULL) {
             arc* next_arc = current_arc -> next;
             free(current_arc);
@@ -94,7 +94,7 @@ void delete_graph(struct graph* graph) {
 
 // fonction pour empiler un noeud
 void push(struct stack** top,struct node* node) {
-    struct stack* new_node = (struct stack*)malloc(sizeof(stack));
+    struct stack* new_node = (struct stack*)malloc(sizeof(struct stack));
     if (new_node == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
@@ -111,7 +111,7 @@ struct node* pop(struct stack** top) {
         exit(EXIT_FAILURE);
     }
     node* node = (*top)->data;
-    stack* temp = *top;
+    struct stack* temp = *top;
     *top = (*top)->next;
     free(temp);
     return node;
