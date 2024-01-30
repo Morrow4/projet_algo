@@ -4,11 +4,11 @@
 CC = gcc
 
 # Source files
-SRC =  part_1.c main.c dfs.o bfs.c degre.c export_import.c
+SRC =  part_1.c main.c dfs.o bfs.c degre.c export_import.c part_2.c
 # fonctions_sousgraphe.c 
 
 # Object files
-OBJECTS = part_1.o main.o dfs.o bfs.o degre.o export_import.o 
+OBJECTS = part_1.o main.o dfs.o bfs.o degre.o export_import.o part_2.o
 # fonctions_sousgraphe.o 
 
 # Target name
