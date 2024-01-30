@@ -45,6 +45,7 @@ int* find_circuit(struct graph* graph);
 int dfs_find_circuit(struct graph* graph, int node_id, int* visited, int parent, int** circuit);
 
 // connexe
+struct graph* reverse_graph(struct graph* graph);
 int is_strongly_connected(struct graph* graph);
 void get_strongly_connected_components(struct graph* graph);
 

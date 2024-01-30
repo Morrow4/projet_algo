@@ -3,6 +3,37 @@
 #include "struct.h"
 #include "fonctions.h"
 
+// Fonction pour inverser un graphe dirigé
+struct graph* reverse_graph(struct graph* graph) {
+    // Vérification des arguments
+    if (graph == NULL || graph->head == NULL) {
+        printf("Invalid graph!\n");
+        return NULL;
+    }
+
+    // Création d'un nouveau graphe
+    struct graph* reversed_graph = create_graph(graph->nb_nodes);
+    if (reversed_graph == NULL) {
+        printf("Memory allocation failed!\n");
+        return NULL;
+    }
+
+    // Parcourir tous les nœuds du graphe original
+    for (int i = 0; i < graph->nb_nodes; i++) {
+        struct node* current_node = &(graph->head[i]);
+
+        // Parcourir toutes les arêtes du nœud actuel
+        struct arc* current_arc = current_node->arc;
+        while (current_arc != NULL) {
+            // Ajouter une arête inverse dans le graphe inversé
+            add_edge(reversed_graph, current_arc->destination->ID, current_node->ID, current_arc->data);
+            current_arc = current_arc->next;
+        }
+    }
+
+    return reversed_graph;
+}
+
 // Fonction auxiliaire pour vérifier la connectivité forte en utilisant DFS
 int dfs_strongly_connected(struct graph* graph, int node_id) {
     // Initialisation des nœuds visités
