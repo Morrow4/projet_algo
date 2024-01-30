@@ -33,4 +33,4 @@ struct graph* sousgraphePartiel(struct graph* graph, int* tabArcs, int nb_arcs);
 char* export_graph(char* filename,struct graph* graph);
 struct graph* import_graph(char* filename);
 
-#endif FONCTIONS_H
+#endif //FONCTIONS_H
