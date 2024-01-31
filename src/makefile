@@ -4,7 +4,10 @@
 CC = gcc
 
 # Source files
-SRC =  struct.c main.c dfs.o bfs.c degre.c export_import.c circuit.c connexe.c complet.c shortest_path.c sous_graphe.c 
+SRC = struct.c dfs.c bfs.c degre.c export_import.c circuit.c connexe.c complet.c shortest_path.c sous_graphe.c main.c
+
+# Object files
+OBJ = $(SRC:.c=.o)
 
 # Target name
 TARGET = projet_algo.exe
@@ -13,8 +16,8 @@ TARGET = projet_algo.exe
 all: build
 
 # Build target file
-build: $(SRC)
-	$(CC) $(SRC) -o $(TARGET) -lm
+build: $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) -lm
 
 # Launch target file
 launch:
@@ -22,4 +25,4 @@ launch:
 
 # Clean object files
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJ) $(TARGET)

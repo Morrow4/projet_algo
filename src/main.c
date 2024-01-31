@@ -5,65 +5,23 @@
 
 int main() {
 
+    //printf("Appuyez sur une touche pour continuer : debug 1...\n");
+    //getchar();
     // Création d'un graphe
     struct graph* my_graph = create_graph(6);
-
+    //printf("Appuyez sur une touche pour continuer : debug 2...\n");
+    //getchar();
     // Ajout des nœuds au graphe
     my_graph = add_node(0, my_graph, 0);
 
     my_graph = add_node(1, my_graph, 1);
-        /*
-    my_graph = add_node(2, my_graph, 2);
-    my_graph = add_node(3, my_graph, 3);
-    my_graph = add_node(4, my_graph, 4);
-    my_graph = add_node(5, my_graph, 5);
-
-
-    // Ajout des arcs au graphe
-    add_arc(my_graph, 0, 1, 4); // De A à B avec poids 4
-    add_arc(my_graph, 0, 2, 3); // De A à C avec poids 3
-    add_arc(my_graph, 1, 2, 1); // De B à C avec poids 1
-    add_arc(my_graph, 1, 3, 2); // De B à D avec poids 2
-    add_arc(my_graph, 2, 3, 4); // De C à D avec poids 4
-    add_arc(my_graph, 2, 4, 3); // De C à E avec poids 3
-    add_arc(my_graph, 3, 4, 2); // De D à E avec poids 2
-    add_arc(my_graph, 3, 5, 1); // De D à F avec poids 1
-    add_arc(my_graph, 4, 5, 5); // De E à F avec poids 5
-
-    // Affichage  du graphe
+    //printf("Appuyez sur une touche pour continuer : debug 3...\n");
+    //getchar();
+    // Affichage du graphe (ajout de cette ligne)
     print_graph(my_graph);
-    breadth_first_search(my_graph, 5);
-    depth_first_search(my_graph, 2);
+    //printf("Appuyez sur une touche pour continuer : debug 4...\n");
+    //getchar();
 
-    // Vérification si le graphe est connexe
-    if (is_strongly_connected(my_graph)) {
-        printf("Le graphe est fortement connexe.\n");
-    } else {
-        printf("Le graphe n'est pas fortement connexe.\n");
-    }
-
-    // Vérification si le graphe est complet
-    if (is_complete_graph(my_graph)) {
-        printf("Le graphe est complet.\n");
-    } else {
-        printf("Le graphe n'est pas complet.\n");
-    }
-
-    // Calcul de l'ordre du graphe
-    int order = complete_graph_order(my_graph);
-    printf("L'ordre du graphe est : %d\n", order);
-    
-    // Affichage du graphe induit et partiel
-    //struct graph* my_graph_2 = sousgrapheInduit(my_graph, tabIndice, nb_nodes);
-    //struct graph* my_graph_3 = sousgraphePartiel(my_graph, tabArcs, nb_arcs);
-    //print_graph(my_graph_2);
-    //print_graph(my_graph_3);
-
-    // Recherche du plus court chemin entre deux sommets
-    int source = 0;
-    int destination = 5;
-    shortest_path(my_graph, source, destination);
-    */
     // Libération de la mémoire allouée pour le graphe
     delete_graph(my_graph);
     return 0;
