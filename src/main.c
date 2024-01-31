@@ -30,7 +30,7 @@ int main() {
     add_arc(my_graph, 3, 5, 1); // De D à F avec poids 1
     add_arc(my_graph, 4, 5, 5); // De E à F avec poids 5
 
-    // Affichage du graphe
+    // Affichage  du graphe
     print_graph(my_graph);
     breadth_first_search(my_graph, 5);
     depth_first_search(my_graph, 2);
