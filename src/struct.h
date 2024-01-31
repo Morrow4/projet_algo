@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node;
+struct node; //redondant mais necessaire
 
 // Structure de graphe
 typedef struct graph {

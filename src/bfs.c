@@ -1,10 +1,8 @@
-// Ajoutez ceci en haut de votre fonction_BFS.c
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
 #include "fonctions.h"
 
-// Fonction de parcours en largeur sur le graphe
 // Fonction de parcours en largeur sur le graphe en utilisant une file
 void breadth_first_search(struct graph* graph, int source) {
     // Vérification des arguments
